@@ -11,14 +11,6 @@ VALUES
     ('SALA-H', 10, TRUE);
 
 INSERT INTO
-    TB_PROFESSOR (NO_PROFESSOR)
-VALUES
-    ('Ana Souza'),
-    ('Beatriz Lima'),
-    ('Carlos Silva'),
-    ('Daniela Oliveira');
-
-INSERT INTO
     TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA)
 VALUES
     ('MAT-101', 'Cálculo I'),
@@ -30,6 +22,21 @@ VALUES
     ('CMP-104', 'Redes de Computadores'),
     ('BIO-101', 'Biologia Molecular'),
     ('BIO-102', 'Genética');
+
+INSERT INTO
+    TB_DEPARTAMENTO (NO_DEPARTAMENTO, QT_MINIMA_TURMAS)
+VALUES
+    ('Departamento de Exatas', 2),
+    ('Departamento de Computação', 3),
+    ('Departamento de Biologia', 1);
+
+INSERT INTO
+    TB_PROFESSOR (NO_PROFESSOR, ID_DEPARTAMENTO)
+VALUES
+    ('Ana Souza', 1), -- Ana Souza, Exatas
+    ('Beatriz Lima', 2), -- Beatriz Lima, Computação
+    ('Carlos Silva', 3), -- Carlos Silva, Biologia
+    ('Daniela Oliveira', 2); -- Daniela Oliveira, Computação
 
 INSERT INTO
     TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR)
@@ -78,10 +85,3 @@ VALUES
     ('SEGUNDA', '13:00:00', '15:00:00'),
     ('QUARTA', '16:00:00', '18:00:00'),
     ('SEXTA', '19:00:00', '21:00:00');
-
-INSERT INTO
-    TB_DEPARTAMENTO (NO_DEPARTAMENTO, QT_MINIMA_TURMAS)
-VALUES
-    ('Departamento de Exatas', 2),
-    ('Departamento de Computação', 3),
-    ('Departamento de Biologia', 1);

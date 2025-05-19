@@ -59,14 +59,6 @@ VALUES
 
 -- Turma 4, Maria Oliveira
 INSERT INTO
-    RL_DEPARTAMENTO_PROFESSOR (ID_DEPARTAMENTO, ID_PROFESSOR)
-VALUES
-    (1, 1), -- Exatas, Ana Souza
-    (2, 2), -- Computação, Beatriz Lima
-    (3, 3);
-
--- Biologia, Carlos Silva
-INSERT INTO
     RL_DEPARTAMENTO_DISCIPLINA (ID_DEPARTAMENTO, ID_DISCIPLINA)
 VALUES
     (1, 1), -- Exatas, Cálculo I

@@ -31,17 +31,6 @@ CREATE TABLE
         CONSTRAINT FK_TURMA_ALUNO_ALUNO FOREIGN KEY (ID_ALUNO) REFERENCES TB_ALUNO (ID_ALUNO)
     );
 
--- Tabela de Professores por Departamento
------ Um departamento pode ter 0 ou mais professores
------ Um professor tem que estar em exatamente 1 departamento
-CREATE TABLE
-    RL_DEPARTAMENTO_PROFESSOR (
-        ID_DEPARTAMENTO SERIAL NOT NULL,
-        ID_PROFESSOR SERIAL NOT NULL,
-        CONSTRAINT FK_DEPARTAMENTO_PROFESSOR_DEPARTAMENTO FOREIGN KEY (ID_DEPARTAMENTO) REFERENCES TB_DEPARTAMENTO (ID_DEPARTAMENTO),
-        CONSTRAINT FK_DEPARTAMENTO_PROFESSOR_PROFESSOR FOREIGN KEY (ID_PROFESSOR) REFERENCES TB_PROFESSOR (ID_PROFESSOR)
-    );
-
 -- Tabela de Disciplinas por Departamento
 ----- Um departamento pode ter 0 ou mais disciplinas
 ----- Uma disciplina tem que estar em exatamente 1 departamento
