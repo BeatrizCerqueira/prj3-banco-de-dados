@@ -31,14 +31,14 @@ VALUES
     ('BIO-102', 'Genética');
 
 INSERT INTO
-    TB_TURMA (CD_TURMA)
+    TB_TURMA (CD_TURMA, ID_SALA)
 VALUES
-    ('TURMA-001'),
-    ('TURMA-002'),
-    ('TURMA-003'),
-    ('TURMA-004'),
-    ('TURMA-005'),
-    ('TURMA-006');
+    ('TURMA-001', 1),
+    ('TURMA-002', 2),
+    ('TURMA-003', 3),
+    ('TURMA-004', 4),
+    ('TURMA-005', 5),
+    ('TURMA-006', NULL);
 
 INSERT INTO
     TB_EQUIPAMENTO (NO_EQUIPAMENTO)

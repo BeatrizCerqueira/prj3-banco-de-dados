@@ -20,17 +20,6 @@ CREATE TABLE
         CONSTRAINT FK_DISCIPLINA_EQUIPAMENTO_EQUIPAMENTO FOREIGN KEY (ID_EQUIPAMENTO) REFERENCES TB_EQUIPAMENTO (ID_EQUIPAMENTO)
     );
 
--- Tabela de Turmas Alocadas por Sala
------ Uma sala pode ter 0 ou mais turmas
------ Uma turma tem que ter exatamente 0 ou 1 sala
-CREATE TABLE
-    RL_SALA_TURMA (
-        ID_SALA SERIAL NOT NULL,
-        ID_TURMA SERIAL NOT NULL,
-        CONSTRAINT FK_SALA_TURMA_SALA FOREIGN KEY (ID_SALA) REFERENCES TB_SALA (ID_SALA),
-        CONSTRAINT FK_SALA_TURMA_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA)
-    );
-
 -- Tabela de Alunos Matriculados por Turma
 ----- Uma turma pode ter 0 ou mais alunos
 ----- Um aluno pode estar em 0 ou mais turmas

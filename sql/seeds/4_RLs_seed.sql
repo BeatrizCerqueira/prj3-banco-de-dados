@@ -34,16 +34,6 @@ VALUES
 
 -- Genética, Microscópio
 INSERT INTO
-    RL_SALA_TURMA (ID_SALA, ID_TURMA)
-VALUES
-    (1, 1), -- Sala A, Turma 1
-    (2, 2), -- Sala B, Turma 2  
-    (3, 3), -- Sala C, Turma 3
-    (4, 4), -- Sala D, Turma 4
-    (5, 5);
-
--- Sala E, Turma 5
-INSERT INTO
     RL_TURMA_ALUNO (ID_TURMA, ID_ALUNO)
 VALUES
     (1, 1), -- Turma 1, Ana Costa
