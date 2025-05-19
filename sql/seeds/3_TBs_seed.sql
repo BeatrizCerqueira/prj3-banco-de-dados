@@ -6,25 +6,22 @@ VALUES
     ('Departamento de Biologia', 1);
 
 INSERT INTO
-    TB_PROFESSOR (NO_PROFESSOR, ID_DEPARTAMENTO)
+    TB_HORARIO (CD_DIA_SEMANA, DH_INICIO, DH_FIM)
 VALUES
-    ('Ana Souza', 1), -- Ana Souza, Exatas
-    ('Beatriz Lima', 2), -- Beatriz Lima, Computação
-    ('Carlos Silva', 3), -- Carlos Silva, Biologia
-    ('Daniela Oliveira', 2); -- Daniela Oliveira, Computação
+    ('SEGUNDA', '10:00:00', '12:00:00'),
+    ('SEGUNDA', '13:00:00', '15:00:00'),
+    ('QUARTA', '16:00:00', '18:00:00'),
+    ('SEXTA', '19:00:00', '21:00:00');
 
 INSERT INTO
-    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA, ID_DEPARTAMENTO)
+    TB_EQUIPAMENTO (NO_EQUIPAMENTO)
 VALUES
-    ('MAT-101', 'Cálculo I', 1), -- Cálculo I, Exatas
-    ('MAT-102', 'Cálculo II', 1), -- Cálculo II, Exatas
-    ('MAT-103', 'Cálculo III', 1), -- Cálculo III, Exatas
-    ('CMP-101', 'Programação Orientada a Objetos', 2), -- POO, Computação
-    ('CMP-102', 'Banco de Dados', 2), -- BD, Computação
-    ('CMP-103', 'Sistemas Operacionais', 2), -- SO, Computação
-    ('CMP-104', 'Redes de Computadores', 2), -- Redes, Computação
-    ('BIO-101', 'Biologia Molecular', 3), -- Biologia Molecular, Biologia
-    ('BIO-102', 'Genética', 3); -- Genética, Biologia
+    ('Projetor'),
+    ('Computador'),
+    ('Quadro Branco'),
+    ('Microscópio'),
+    ('Tablet'),
+    ('Impressora');
 
 INSERT INTO
     TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
@@ -37,17 +34,6 @@ VALUES
     ('SALA-F', 8, TRUE),
     ('SALA-G', 9, TRUE),
     ('SALA-H', 10, TRUE);
-
-INSERT INTO
-    TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR)
-VALUES
-    ('TURMA-001', 1, 1), -- Turma 1, Sala A, Ana Souza
-    ('TURMA-002', 2, 1), -- Turma 2, Sala B, Ana Souza
-    ('TURMA-003', 3, 2), -- Turma 3, Sala C, Beatriz Lima
-    ('TURMA-004', 4, 2), -- Turma 4, Sala D, Beatriz Lima
-    ('TURMA-005', 5, 3), -- Turma 5, Sala E, Carlos Silva
-    ('TURMA-006', 6, NULL), -- Turma 6, Sala F, Sem Professor
-    ('TURMA-007', NULL, 2); -- Turma 7, Sem Sala, Beatriz Lima
 
 INSERT INTO
     TB_ALUNO (NO_ALUNO, IS_PESSOA_COM_DEFICIENCIA)
@@ -69,19 +55,33 @@ VALUES
     ('Vanessa Souza', FALSE);
 
 INSERT INTO
-    TB_EQUIPAMENTO (NO_EQUIPAMENTO)
+    TB_PROFESSOR (NO_PROFESSOR, ID_DEPARTAMENTO)
 VALUES
-    ('Projetor'),
-    ('Computador'),
-    ('Quadro Branco'),
-    ('Microscópio'),
-    ('Tablet'),
-    ('Impressora');
+    ('Ana Souza', 1), -- Ana Souza, Exatas
+    ('Beatriz Lima', 2), -- Beatriz Lima, Computação
+    ('Carlos Silva', 3), -- Carlos Silva, Biologia
+    ('Daniela Oliveira', 2); -- Daniela Oliveira, Computação
 
 INSERT INTO
-    TB_HORARIO (CD_DIA_SEMANA, DH_INICIO, DH_FIM)
+    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA, ID_DEPARTAMENTO)
 VALUES
-    ('SEGUNDA', '10:00:00', '12:00:00'),
-    ('SEGUNDA', '13:00:00', '15:00:00'),
-    ('QUARTA', '16:00:00', '18:00:00'),
-    ('SEXTA', '19:00:00', '21:00:00');
+    ('MAT-101', 'Cálculo I', 1), -- Cálculo I, Exatas
+    ('MAT-102', 'Cálculo II', 1), -- Cálculo II, Exatas
+    ('MAT-103', 'Cálculo III', 1), -- Cálculo III, Exatas
+    ('CMP-101', 'Programação Orientada a Objetos', 2), -- POO, Computação
+    ('CMP-102', 'Banco de Dados', 2), -- BD, Computação
+    ('CMP-103', 'Sistemas Operacionais', 2), -- SO, Computação
+    ('CMP-104', 'Redes de Computadores', 2), -- Redes, Computação
+    ('BIO-101', 'Biologia Molecular', 3), -- Biologia Molecular, Biologia
+    ('BIO-102', 'Genética', 3); -- Genética, Biologia
+
+INSERT INTO
+    TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR, ID_HORARIO)
+VALUES
+    ('TURMA-001', 1, 1, 1), -- Turma 1, Sala A, Ana Souza, SEG 10:00-12:00
+    ('TURMA-002', 2, 1, 2), -- Turma 2, Sala B, Ana Souza, SEG 13:00-15:00
+    ('TURMA-003', 3, 2, 3), -- Turma 3, Sala C, Beatriz Lima, QUA 16:00-18:00
+    ('TURMA-004', 4, 2, 4), -- Turma 4, Sala D, Beatriz Lima, SEX 19:00-21:00
+    ('TURMA-005', 5, 3, 1), -- Turma 5, Sala E, Carlos Silva, SEG 10:00-12:00
+    ('TURMA-006', 6, NULL, 2), -- Turma 6, Sala F, Sem Professor, SEG 13:00-15:00
+    ('TURMA-007', NULL, 2, 3); -- Turma 7, Sem Sala, Beatriz Lima, QUA 16:00-18:00
