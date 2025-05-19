@@ -1,29 +1,4 @@
 INSERT INTO
-    TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
-VALUES
-    ('SALA-A', 3, FALSE),
-    ('SALA-B', 4, FALSE),
-    ('SALA-C', 5, TRUE),
-    ('SALA-D', 6, TRUE),
-    ('SALA-E', 7, TRUE),
-    ('SALA-F', 8, TRUE),
-    ('SALA-G', 9, TRUE),
-    ('SALA-H', 10, TRUE);
-
-INSERT INTO
-    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA)
-VALUES
-    ('MAT-101', 'Cálculo I'),
-    ('MAT-102', 'Cálculo II'),
-    ('MAT-103', 'Cálculo III'),
-    ('CMP-101', 'Programação Orientada a Objetos'),
-    ('CMP-102', 'Banco de Dados'),
-    ('CMP-103', 'Sistemas Operacionais'),
-    ('CMP-104', 'Redes de Computadores'),
-    ('BIO-101', 'Biologia Molecular'),
-    ('BIO-102', 'Genética');
-
-INSERT INTO
     TB_DEPARTAMENTO (NO_DEPARTAMENTO, QT_MINIMA_TURMAS)
 VALUES
     ('Departamento de Exatas', 2),
@@ -39,6 +14,31 @@ VALUES
     ('Daniela Oliveira', 2); -- Daniela Oliveira, Computação
 
 INSERT INTO
+    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA, ID_DEPARTAMENTO)
+VALUES
+    ('MAT-101', 'Cálculo I', 1), -- Cálculo I, Exatas
+    ('MAT-102', 'Cálculo II', 1), -- Cálculo II, Exatas
+    ('MAT-103', 'Cálculo III', 1), -- Cálculo III, Exatas
+    ('CMP-101', 'Programação Orientada a Objetos', 2), -- POO, Computação
+    ('CMP-102', 'Banco de Dados', 2), -- BD, Computação
+    ('CMP-103', 'Sistemas Operacionais', 2), -- SO, Computação
+    ('CMP-104', 'Redes de Computadores', 2), -- Redes, Computação
+    ('BIO-101', 'Biologia Molecular', 3), -- Biologia Molecular, Biologia
+    ('BIO-102', 'Genética', 3); -- Genética, Biologia
+
+INSERT INTO
+    TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
+VALUES
+    ('SALA-A', 3, FALSE),
+    ('SALA-B', 4, FALSE),
+    ('SALA-C', 5, TRUE),
+    ('SALA-D', 6, TRUE),
+    ('SALA-E', 7, TRUE),
+    ('SALA-F', 8, TRUE),
+    ('SALA-G', 9, TRUE),
+    ('SALA-H', 10, TRUE);
+
+INSERT INTO
     TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR)
 VALUES
     ('TURMA-001', 1, 1), -- Turma 1, Sala A, Ana Souza
@@ -48,16 +48,6 @@ VALUES
     ('TURMA-005', 5, 3), -- Turma 5, Sala E, Carlos Silva
     ('TURMA-006', 6, NULL), -- Turma 6, Sala F, Sem Professor
     ('TURMA-007', NULL, 2); -- Turma 7, Sem Sala, Beatriz Lima
-
-INSERT INTO
-    TB_EQUIPAMENTO (NO_EQUIPAMENTO)
-VALUES
-    ('Projetor'),
-    ('Computador'),
-    ('Quadro Branco'),
-    ('Microscópio'),
-    ('Tablet'),
-    ('Impressora');
 
 INSERT INTO
     TB_ALUNO (NO_ALUNO, IS_PESSOA_COM_DEFICIENCIA)
@@ -77,6 +67,16 @@ VALUES
     ('Samuel Costa', FALSE),
     ('Thiago Lima', FALSE),
     ('Vanessa Souza', FALSE);
+
+INSERT INTO
+    TB_EQUIPAMENTO (NO_EQUIPAMENTO)
+VALUES
+    ('Projetor'),
+    ('Computador'),
+    ('Quadro Branco'),
+    ('Microscópio'),
+    ('Tablet'),
+    ('Impressora');
 
 INSERT INTO
     TB_HORARIO (CD_DIA_SEMANA, DH_INICIO, DH_FIM)

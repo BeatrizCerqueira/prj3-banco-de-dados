@@ -59,20 +59,6 @@ VALUES
 
 -- Turma 4, Maria Oliveira
 INSERT INTO
-    RL_DEPARTAMENTO_DISCIPLINA (ID_DEPARTAMENTO, ID_DISCIPLINA)
-VALUES
-    (1, 1), -- Exatas, Cálculo I
-    (1, 2), -- Exatas, Cálculo II
-    (1, 3), -- Exatas, Cálculo III
-    (2, 4), -- Computação, POO
-    (2, 5), -- Computação, BD
-    (2, 6), -- Computação, SO
-    (2, 7), -- Computação, Redes
-    (3, 8), -- Biologia, Biologia Molecular
-    (3, 9);
-
--- Biologia, Genética
-INSERT INTO
     RL_TURMA_HORARIO (ID_TURMA, ID_HORARIO)
 VALUES
     (1, 1), -- Turma 1, SEG 10:00-12:00

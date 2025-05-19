@@ -31,17 +31,6 @@ CREATE TABLE
         CONSTRAINT FK_TURMA_ALUNO_ALUNO FOREIGN KEY (ID_ALUNO) REFERENCES TB_ALUNO (ID_ALUNO)
     );
 
--- Tabela de Disciplinas por Departamento
------ Um departamento pode ter 0 ou mais disciplinas
------ Uma disciplina tem que estar em exatamente 1 departamento
-CREATE TABLE
-    RL_DEPARTAMENTO_DISCIPLINA (
-        ID_DEPARTAMENTO SERIAL NOT NULL,
-        ID_DISCIPLINA SERIAL NOT NULL,
-        CONSTRAINT FK_DEPARTAMENTO_DISCIPLINA_DEPARTAMENTO FOREIGN KEY (ID_DEPARTAMENTO) REFERENCES TB_DEPARTAMENTO (ID_DEPARTAMENTO),
-        CONSTRAINT FK_DEPARTAMENTO_DISCIPLINA_DISCIPLINA FOREIGN KEY (ID_DISCIPLINA) REFERENCES TB_DISCIPLINA (ID_DISCIPLINA)
-    );
-
 -- Tabela de Horários por Turma
 ----- Uma turma tem que ter exatamente 1 horário
 ----- Um horário pode estar em 0 ou mais turmas
