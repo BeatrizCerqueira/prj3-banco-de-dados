@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: prj3-database
+    image: prj3-postgres:latest
+    ports:
+      - '5432:5432'

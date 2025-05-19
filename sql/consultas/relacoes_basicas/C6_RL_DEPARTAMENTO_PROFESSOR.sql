@@ -1,0 +1,11 @@
+-- Consulta para visualizar os professores de cada departamento
+SELECT
+    d.NO_DEPARTAMENTO as Departamento,
+    p.NO_PROFESSOR as Professor
+FROM
+    TB_DEPARTAMENTO d
+    LEFT JOIN RL_DEPARTAMENTO_PROFESSOR rdp ON d.ID_DEPARTAMENTO = rdp.ID_DEPARTAMENTO
+    LEFT JOIN TB_PROFESSOR p ON p.ID_PROFESSOR = rdp.ID_PROFESSOR
+ORDER BY
+    d.NO_DEPARTAMENTO,
+    p.NO_PROFESSOR; 

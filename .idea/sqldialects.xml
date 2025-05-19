@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/sql/migrations/M1_tabelas_de_sistema.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/avancadas/A1_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/avancadas/A2_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/avancadas/A3_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/avancadas/A4_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/avancadas/A5_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/intermediarias/I1_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/intermediarias/I2_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/intermediarias/I3_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/queries/intermediarias/I4_query.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/seeds/S1_tb_seed.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/sql/seeds/S2_rl_seed.sql" dialect="PostgreSQL" />
+    <file url="PROJECT" dialect="PostgreSQL" />
+  </component>
+</project>

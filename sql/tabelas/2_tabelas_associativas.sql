@@ -1,0 +1,87 @@
+-- Tabela de Equipamentos Disponíveis por Sala
+----- Uma sala pode ter 0 ou mais equipamentos
+----- Um equipamento pode estar em 0 ou mais salas
+CREATE TABLE
+    RL_SALA_EQUIPAMENTO (
+        ID_SALA SERIAL NOT NULL,
+        ID_EQUIPAMENTO SERIAL NOT NULL,
+        CONSTRAINT FK_SALA_EQUIPAMENTO_SALA FOREIGN KEY (ID_SALA) REFERENCES TB_SALA (ID_SALA),
+        CONSTRAINT FK_SALA_EQUIPAMENTO_EQUIPAMENTO FOREIGN KEY (ID_EQUIPAMENTO) REFERENCES TB_EQUIPAMENTO (ID_EQUIPAMENTO)
+    );
+
+-- Tabela de Equipamentos Necessários por Disciplina
+----- Uma disciplina pode precisar de 0 ou mais equipamentos
+----- Um equipamento pode ser necessário para 0 ou mais disciplinas
+CREATE TABLE
+    RL_DISCIPLINA_EQUIPAMENTO (
+        ID_DISCIPLINA SERIAL NOT NULL,
+        ID_EQUIPAMENTO SERIAL NOT NULL,
+        CONSTRAINT FK_DISCIPLINA_EQUIPAMENTO_DISCIPLINA FOREIGN KEY (ID_DISCIPLINA) REFERENCES TB_DISCIPLINA (ID_DISCIPLINA),
+        CONSTRAINT FK_DISCIPLINA_EQUIPAMENTO_EQUIPAMENTO FOREIGN KEY (ID_EQUIPAMENTO) REFERENCES TB_EQUIPAMENTO (ID_EQUIPAMENTO)
+    );
+
+-- Tabela de Turmas Alocadas por Sala
+----- Uma sala pode ter 0 ou mais turmas
+----- Uma turma tem que ter exatamente 0 ou 1 sala
+CREATE TABLE
+    RL_SALA_TURMA (
+        ID_SALA SERIAL NOT NULL,
+        ID_TURMA SERIAL NOT NULL,
+        CONSTRAINT FK_SALA_TURMA_SALA FOREIGN KEY (ID_SALA) REFERENCES TB_SALA (ID_SALA),
+        CONSTRAINT FK_SALA_TURMA_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA)
+    );
+
+-- Tabela de Alunos Matriculados por Turma
+----- Uma turma pode ter 0 ou mais alunos
+----- Um aluno pode estar em 0 ou mais turmas
+CREATE TABLE
+    RL_TURMA_ALUNO (
+        ID_TURMA SERIAL NOT NULL,
+        ID_ALUNO SERIAL NOT NULL,
+        CONSTRAINT FK_TURMA_ALUNO_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA),
+        CONSTRAINT FK_TURMA_ALUNO_ALUNO FOREIGN KEY (ID_ALUNO) REFERENCES TB_ALUNO (ID_ALUNO)
+    );
+
+-- Tabela de Turmas Alocadas por Professor
+----- Um professor pode lecionar 0 ou mais turmas
+----- Uma turma tem que ser lecionada por exatamente 0 ou 1 professor
+CREATE TABLE
+    RL_PROFESSOR_TURMA (
+        ID_PROFESSOR SERIAL NOT NULL,
+        ID_TURMA SERIAL NOT NULL,
+        CONSTRAINT FK_PROFESSOR_TURMA_PROFESSOR FOREIGN KEY (ID_PROFESSOR) REFERENCES TB_PROFESSOR (ID_PROFESSOR),
+        CONSTRAINT FK_PROFESSOR_TURMA_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA)
+    );
+
+-- Tabela de Professores por Departamento
+----- Um departamento pode ter 0 ou mais professores
+----- Um professor tem que estar em exatamente 1 departamento
+CREATE TABLE
+    RL_DEPARTAMENTO_PROFESSOR (
+        ID_DEPARTAMENTO SERIAL NOT NULL,
+        ID_PROFESSOR SERIAL NOT NULL,
+        CONSTRAINT FK_DEPARTAMENTO_PROFESSOR_DEPARTAMENTO FOREIGN KEY (ID_DEPARTAMENTO) REFERENCES TB_DEPARTAMENTO (ID_DEPARTAMENTO),
+        CONSTRAINT FK_DEPARTAMENTO_PROFESSOR_PROFESSOR FOREIGN KEY (ID_PROFESSOR) REFERENCES TB_PROFESSOR (ID_PROFESSOR)
+    );
+
+-- Tabela de Disciplinas por Departamento
+----- Um departamento pode ter 0 ou mais disciplinas
+----- Uma disciplina tem que estar em exatamente 1 departamento
+CREATE TABLE
+    RL_DEPARTAMENTO_DISCIPLINA (
+        ID_DEPARTAMENTO SERIAL NOT NULL,
+        ID_DISCIPLINA SERIAL NOT NULL,
+        CONSTRAINT FK_DEPARTAMENTO_DISCIPLINA_DEPARTAMENTO FOREIGN KEY (ID_DEPARTAMENTO) REFERENCES TB_DEPARTAMENTO (ID_DEPARTAMENTO),
+        CONSTRAINT FK_DEPARTAMENTO_DISCIPLINA_DISCIPLINA FOREIGN KEY (ID_DISCIPLINA) REFERENCES TB_DISCIPLINA (ID_DISCIPLINA)
+    );
+
+-- Tabela de Horários por Turma
+----- Uma turma tem que ter exatamente 1 horário
+----- Um horário pode estar em 0 ou mais turmas
+CREATE TABLE
+    RL_TURMA_HORARIO (
+        ID_TURMA SERIAL NOT NULL,
+        ID_HORARIO SERIAL NOT NULL,
+        CONSTRAINT FK_TURMA_HORARIO_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA),
+        CONSTRAINT FK_TURMA_HORARIO_HORARIO FOREIGN KEY (ID_HORARIO) REFERENCES TB_HORARIO (ID_HORARIO)
+    );
