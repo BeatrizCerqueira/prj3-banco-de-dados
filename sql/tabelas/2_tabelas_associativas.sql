@@ -31,17 +31,6 @@ CREATE TABLE
         CONSTRAINT FK_TURMA_ALUNO_ALUNO FOREIGN KEY (ID_ALUNO) REFERENCES TB_ALUNO (ID_ALUNO)
     );
 
--- Tabela de Turmas Alocadas por Professor
------ Um professor pode lecionar 0 ou mais turmas
------ Uma turma tem que ser lecionada por exatamente 0 ou 1 professor
-CREATE TABLE
-    RL_PROFESSOR_TURMA (
-        ID_PROFESSOR SERIAL NOT NULL,
-        ID_TURMA SERIAL NOT NULL,
-        CONSTRAINT FK_PROFESSOR_TURMA_PROFESSOR FOREIGN KEY (ID_PROFESSOR) REFERENCES TB_PROFESSOR (ID_PROFESSOR),
-        CONSTRAINT FK_PROFESSOR_TURMA_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA)
-    );
-
 -- Tabela de Professores por Departamento
 ----- Um departamento pode ter 0 ou mais professores
 ----- Um professor tem que estar em exatamente 1 departamento

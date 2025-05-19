@@ -59,17 +59,6 @@ VALUES
 
 -- Turma 4, Maria Oliveira
 INSERT INTO
-    RL_PROFESSOR_TURMA (ID_PROFESSOR, ID_TURMA)
-VALUES
-    (1, 1), -- Ana Souza, Turma 1
-    (1, 2), -- Ana Souza, Turma 2
-    (2, 3), -- Beatriz Lima, Turma 3
-    (2, 4), -- Beatriz Lima, Turma 4
-    (3, 5), -- Carlos Silva, Turma 5
-    (3, 6);
-
--- Carlos Silva, Turma 6
-INSERT INTO
     RL_DEPARTAMENTO_PROFESSOR (ID_DEPARTAMENTO, ID_PROFESSOR)
 VALUES
     (1, 1), -- Exatas, Ana Souza

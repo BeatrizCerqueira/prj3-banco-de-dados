@@ -15,7 +15,8 @@ INSERT INTO
 VALUES
     ('Ana Souza'),
     ('Beatriz Lima'),
-    ('Carlos Silva');
+    ('Carlos Silva'),
+    ('Daniela Oliveira');
 
 INSERT INTO
     TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA)
@@ -31,14 +32,15 @@ VALUES
     ('BIO-102', 'Genética');
 
 INSERT INTO
-    TB_TURMA (CD_TURMA, ID_SALA)
+    TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR)
 VALUES
-    ('TURMA-001', 1),
-    ('TURMA-002', 2),
-    ('TURMA-003', 3),
-    ('TURMA-004', 4),
-    ('TURMA-005', 5),
-    ('TURMA-006', NULL);
+    ('TURMA-001', 1, 1), -- Turma 1, Sala A, Ana Souza
+    ('TURMA-002', 2, 1), -- Turma 2, Sala B, Ana Souza
+    ('TURMA-003', 3, 2), -- Turma 3, Sala C, Beatriz Lima
+    ('TURMA-004', 4, 2), -- Turma 4, Sala D, Beatriz Lima
+    ('TURMA-005', 5, 3), -- Turma 5, Sala E, Carlos Silva
+    ('TURMA-006', 6, NULL), -- Turma 6, Sala F, Sem Professor
+    ('TURMA-007', NULL, 2); -- Turma 7, Sem Sala, Beatriz Lima
 
 INSERT INTO
     TB_EQUIPAMENTO (NO_EQUIPAMENTO)
