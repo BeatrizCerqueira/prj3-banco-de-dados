@@ -4,59 +4,57 @@
 
 ### Entidades
 
-**Alocação**
-- ID
-- Turma_ID
-- Sala_ID
-- Horário_ID
-- Professor_ID
+**Horário (TB_HORARIO)**
+- ID_HORARIO (PK)
+- CD_DIA_SEMANA
+- DH_INICIO
+- DH_FIM
 
-**Turma**
-- ID
-- Nome
+**Equipamento (TB_EQUIPAMENTO)**
+- ID_EQUIPAMENTO (PK)
+- NO_EQUIPAMENTO
 
-**Sala**
-- ID
-- Número/Identificação
-- Capacidade
-- Acessível (boolean)
+**Sala (TB_SALA)**
+- ID_SALA (PK)
+- CD_SALA
+- QT_CAPACIDADE
+- IS_ACESSIVEL
 
-**Horário**
-- ID
-- Dia da Semana
-- Horário Início
-- Horário Fim
+**Aluno (TB_ALUNO)**
+- ID_ALUNO (PK)
+- NO_ALUNO
+- IS_PESSOA_COM_DEFICIENCIA
 
-**Professor**
-- ID
-- Nome
-- Horários_Disponíveis (relação muitos-para-muitos com Horário)
-- Carga Horária Máxima
+**Professor (TB_PROFESSOR)**
+- ID_PROFESSOR (PK)
+- NO_PROFESSOR
 
-**Disciplina**
-- ID
-- Nome
-- Código
-- Equipamentos Necessários
-- Capacidade Máxima de Alunos
+**Disciplina (TB_DISCIPLINA)**
+- ID_DISCIPLINA (PK)
+- CD_DISCIPLINA
+- NO_DISCIPLINA
 
-**Equipamento**
-- ID
-- Nome
-- Sala_ID
+**Turma (TB_TURMA)**
+- ID_TURMA (PK)
+- CD_TURMA
+- ID_DISCIPLINA (FK)
+- ID_HORARIO (FK)
+- ID_PROFESSOR (FK)
+- ID_SALA (FK)
 
-**Matrícula**
-- ID
-- Aluno_ID
-- Turma_ID
+### Relacionamentos
 
-**Aluno**
-- ID
-- Nome
-- Horários_Disponíveis (relação muitos-para-muitos com Horário)
-- Carga Horária Máxima
-- É Pessoa Com Deficiência (boolean)
+**Sala-Equipamento (RL_SALA_EQUIPAMENTO)**
+- ID_SALA (FK)
+- ID_EQUIPAMENTO (FK)
 
+**Disciplina-Equipamento (RL_DISCIPLINA_EQUIPAMENTO)**
+- ID_DISCIPLINA (FK)
+- ID_EQUIPAMENTO (FK)
+
+**Turma-Aluno (RL_TURMA_ALUNO)**
+- ID_TURMA (FK)
+- ID_ALUNO (FK)
 
 ## Requisitos/Queries
 

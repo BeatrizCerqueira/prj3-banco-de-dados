@@ -17,18 +17,6 @@ VALUES
     ('Impressora');
 
 INSERT INTO
-    TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
-VALUES
-    ('SALA-A', 3, FALSE),
-    ('SALA-B', 4, FALSE),
-    ('SALA-C', 5, TRUE),
-    ('SALA-D', 6, TRUE),
-    ('SALA-E', 7, TRUE),
-    ('SALA-F', 8, TRUE),
-    ('SALA-G', 9, TRUE),
-    ('SALA-H', 10, TRUE);
-
-INSERT INTO
     TB_ALUNO (NO_ALUNO, IS_PESSOA_COM_DEFICIENCIA)
 VALUES
     ('Ana Costa', TRUE),
@@ -67,6 +55,18 @@ VALUES
     ('CMP-104', 'Redes de Computadores'),
     ('BIO-101', 'Biologia Molecular'),
     ('BIO-102', 'Genética');
+
+INSERT INTO
+    TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
+VALUES
+    ('SALA-A', 3, FALSE),
+    ('SALA-B', 4, FALSE),
+    ('SALA-C', 5, TRUE),
+    ('SALA-D', 6, TRUE),
+    ('SALA-E', 7, TRUE),
+    ('SALA-F', 8, TRUE),
+    ('SALA-G', 9, TRUE),
+    ('SALA-H', 10, TRUE);
 
 INSERT INTO
     TB_TURMA (CD_TURMA, ID_DISCIPLINA, ID_HORARIO, ID_PROFESSOR, ID_SALA)
