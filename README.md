@@ -88,11 +88,9 @@
 
 ### Estendidos
 
-7. **Limitar alunos para que não estejam matriculados em mais de uma turma da mesma disciplina**
-   - Consultar turmas de uma disciplina
-   - Consultar alunos matriculados em uma disciplina
-   - Verificar se um aluno já está matriculado em outra turma da mesma disciplina
-   - Consultar disciplinas com múltiplas turmas
+7. **Limitar para que alunos não estejam matriculados em mais de uma turma da mesma disciplina**
+   1. Consultar disciplinas com múltiplas turmas
+   2. Consultar todas as turmas de um aluno
 
 8. **Matricular alunos com deficiência apenas em salas com acessibilidade**
     - Consultar salas acessíveis
