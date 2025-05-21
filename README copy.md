@@ -88,11 +88,8 @@
    2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
-   - Consultar salas disponíveis em um horário específico
-   - Consultar se uma sala tem todos os equipamentos necessários para uma disciplina
-   - Consultar salas que atendem aos requisitos técnicos de uma disciplina
-   - Consultar capacidade da sala vs número de alunos matriculados
-   - Consultar alocações de uma sala em um período
+   1. Consultar se uma sala tem todos os equipamentos necessários para uma disciplina
+   2. Consultar capacidade da sala vs número de alunos matriculados
 
 3. **Controlar disponibilidade de professores**
    - Consultar horários disponíveis de um professor
