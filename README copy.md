@@ -84,14 +84,8 @@
 ## Queries
 
 1. **Gerenciar disciplinas, horários e matrículas**
-   - Consultar todas as disciplinas com suas informações
-   - Consultar horários disponíveis de uma sala
-   - Consultar horários disponíveis de um professor
-   - Consultar horários disponíveis de um aluno
-   - Consultar matrículas de uma turma
-   - Consultar vagas disponíveis em uma turma
-   - Consultar disciplinas por professor
-   - Consultar disciplinas por aluno
+   1. Consultar quantidade de matrículas por turma
+   2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
    - Consultar salas disponíveis em um horário específico

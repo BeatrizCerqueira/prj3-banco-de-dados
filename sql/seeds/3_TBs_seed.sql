@@ -76,12 +76,13 @@ VALUES
     ('BIO-102', 'Genética', 3); -- Genética, Biologia
 
 INSERT INTO
-    TB_TURMA (CD_TURMA, ID_SALA, ID_PROFESSOR, ID_HORARIO)
+    TB_TURMA (CD_TURMA, ID_DISCIPLINA, ID_HORARIO, ID_PROFESSOR, ID_SALA)
 VALUES
-    ('TURMA-001', 1, 1, 1), -- Turma 1, Sala A, Ana Souza, SEG 10:00-12:00
-    ('TURMA-002', 2, 1, 2), -- Turma 2, Sala B, Ana Souza, SEG 13:00-15:00
-    ('TURMA-003', 3, 2, 3), -- Turma 3, Sala C, Beatriz Lima, QUA 16:00-18:00
-    ('TURMA-004', 4, 2, 4), -- Turma 4, Sala D, Beatriz Lima, SEX 19:00-21:00
-    ('TURMA-005', 5, 3, 1), -- Turma 5, Sala E, Carlos Silva, SEG 10:00-12:00
-    ('TURMA-006', 6, NULL, 2), -- Turma 6, Sala F, Sem Professor, SEG 13:00-15:00
-    ('TURMA-007', NULL, 2, 3); -- Turma 7, Sem Sala, Beatriz Lima, QUA 16:00-18:00
+    ('TURMA-001', 1, 1, 1, 1), -- Turma 1, Cálculo I, SEG 10:00-12:00, Ana Souza, Sala A
+    ('TURMA-002', 1, 2, 1, 2), -- Turma 2, Cálculo I, SEG 13:00-15:00, Ana Souza, Sala B
+    ('TURMA-003', 2, 3, 2, 3), -- Turma 3, Cálculo II, QUA 16:00-18:00, Beatriz Lima, Sala C
+    ('TURMA-004', 4, 4, 2, 4), -- Turma 4, POO, SEX 19:00-21:00, Beatriz Lima, Sala D
+    ('TURMA-005', 4, 1, 3, 5), -- Turma 5, POO, SEG 10:00-12:00, Carlos Silva, Sala E
+    ('TURMA-006', 4, 2, NULL, 6), -- Turma 6, POO, SEG 13:00-15:00, Sem Professor, Sala F
+    ('TURMA-007', 8, 3, 2, NULL), -- Turma 7, Biologia Molecular, QUA 16:00-18:00, Beatriz Lima, Sem Sala
+    ('TURMA-008', 9, 1, NULL, NULL); -- Turma 8, Cálculo I, SEG 10:00-12:00, Sem Professor, Sem Sala
