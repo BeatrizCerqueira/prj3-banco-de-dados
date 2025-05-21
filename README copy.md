@@ -96,10 +96,8 @@
    2. Consultar horários disponíveis de um professor
 
 4. **Gerenciar equipamentos disponíveis em cada sala**
-   - Consultar equipamentos de uma sala
-   - Consultar salas com um equipamento específico
-   - Consultar disponibilidade de equipamentos em um horário
-   - Consultar equipamentos necessários vs disponíveis em uma sala
+   1. Consultar equipamentos com maior estoque
+   2. Consultar disponibilidade de equipamentos por horário
 
 5. **Gerar relatórios de ocupação**
    - Consultar ocupação por sala
