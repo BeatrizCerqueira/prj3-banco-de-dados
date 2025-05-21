@@ -1,4 +1,4 @@
--- Requisito 4.2: Consultar disponibilidade de equipamentos por horário
+-- Requisito 4.2: Consultar disponibilidade de equipamentos em um horário
 WITH salas_disponiveis AS (
     SELECT 
         e.ID_EQUIPAMENTO,

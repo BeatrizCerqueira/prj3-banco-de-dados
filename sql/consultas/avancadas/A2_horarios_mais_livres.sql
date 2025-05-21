@@ -21,4 +21,6 @@ GROUP BY
     h.DH_INICIO,
     h.DH_FIM
 ORDER BY 
-    salas_livres DESC;
+    salas_livres DESC,
+    h.CD_DIA_SEMANA,
+    h.DH_INICIO;

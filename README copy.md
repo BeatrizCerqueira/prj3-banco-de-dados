@@ -84,7 +84,7 @@
 ## Queries
 
 1. **Gerenciar disciplinas, horários e matrículas**
-   1. Consultar quantidade de matrículas por turma
+   1. Consultar quantidade de matrículas em uma turma
    2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
@@ -97,23 +97,15 @@
 
 4. **Gerenciar equipamentos disponíveis em cada sala**
    1. Consultar equipamentos com maior estoque
-   2. Consultar disponibilidade de equipamentos por horário
+   2. Consultar disponibilidade de equipamentos em um horário
 
 5. **Gerar relatórios de ocupação**
-   - Consultar ocupação por sala
-   - Consultar ocupação por período
-   - Consultar taxa de ocupação
-   - Consultar salas mais utilizadas
-   - Consultar horários mais demandados
-   - Consultar salas subutilizadas
+   1. Consultar quantidade de turmas em uma sala
+   2. Consultar horários ocupados em uma sala
 
 6. **Evitar conflitos de horário e superlotação**
-   - Consultar horários já alocados em uma sala
-   - Consultar horários já alocados de um professor
-   - Consultar horários já alocados de um aluno
-   - Consultar lotação atual de uma sala
-   - Consultar lotação atual de uma turma
-   - Consultar turmas próximas da capacidade máxima
+   1. Consultar horários mais requisitados (com mais turmas alocadas)
+   2. Consultar turmas próximas da capacidade máxima
 
 7. **Alocar professores apenas para disciplinas do seu departamento**
    - Consultar disciplinas de um departamento

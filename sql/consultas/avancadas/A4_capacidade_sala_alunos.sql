@@ -4,7 +4,6 @@ SELECT
     h.CD_DIA_SEMANA,
     h.DH_INICIO,
     h.DH_FIM,
-    t.CD_TURMA,
     s.QT_CAPACIDADE,
     COUNT(rta.ID_ALUNO) as alunos_matriculados,
     s.QT_CAPACIDADE - COUNT(rta.ID_ALUNO) as vagas_disponiveis
@@ -19,18 +18,8 @@ GROUP BY
     h.CD_DIA_SEMANA,
     h.DH_INICIO,
     h.DH_FIM,
-    t.CD_TURMA,
     s.QT_CAPACIDADE
 ORDER BY
     s.CD_SALA,
-    CASE h.CD_DIA_SEMANA
-        WHEN 'SEGUNDA' THEN 1
-        WHEN 'TERCA' THEN 2
-        WHEN 'QUARTA' THEN 3
-        WHEN 'QUINTA' THEN 4
-        WHEN 'SEXTA' THEN 5
-        WHEN 'SABADO' THEN 6
-        WHEN 'DOMINGO' THEN 7
-    END,
-    h.DH_INICIO,
-    t.CD_TURMA;
+    h.CD_DIA_SEMANA,
+    h.DH_INICIO;

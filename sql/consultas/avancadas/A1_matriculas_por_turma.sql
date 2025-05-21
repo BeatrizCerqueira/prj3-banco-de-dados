@@ -1,4 +1,4 @@
--- Requisito 1.1: Consultar quantidade de matrículas por turma
+-- Requisito 1.1: Consultar quantidade de matrículas em uma turma
 SELECT
     t.CD_TURMA as Turma,
     d.CD_DISCIPLINA as Codigo_Disciplina,
