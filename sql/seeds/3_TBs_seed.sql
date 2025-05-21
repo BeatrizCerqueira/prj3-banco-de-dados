@@ -1,11 +1,4 @@
 INSERT INTO
-    TB_DEPARTAMENTO (NO_DEPARTAMENTO, QT_MINIMA_TURMAS)
-VALUES
-    ('Departamento de Exatas', 2),
-    ('Departamento de Computação', 3),
-    ('Departamento de Biologia', 1);
-
-INSERT INTO
     TB_HORARIO (CD_DIA_SEMANA, DH_INICIO, DH_FIM)
 VALUES
     ('SEGUNDA', '10:00:00', '12:00:00'),
@@ -55,25 +48,25 @@ VALUES
     ('Vanessa Souza', FALSE);
 
 INSERT INTO
-    TB_PROFESSOR (NO_PROFESSOR, ID_DEPARTAMENTO)
+    TB_PROFESSOR (NO_PROFESSOR)
 VALUES
-    ('Ana Souza', 1), -- Ana Souza, Exatas
-    ('Beatriz Lima', 2), -- Beatriz Lima, Computação
-    ('Carlos Silva', 3), -- Carlos Silva, Biologia
-    ('Daniela Oliveira', 2); -- Daniela Oliveira, Computação
+    ('Ana Souza'),
+    ('Beatriz Lima'),
+    ('Carlos Silva'),
+    ('Daniela Oliveira');
 
 INSERT INTO
-    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA, ID_DEPARTAMENTO)
+    TB_DISCIPLINA (CD_DISCIPLINA, NO_DISCIPLINA)
 VALUES
-    ('MAT-101', 'Cálculo I', 1), -- Cálculo I, Exatas
-    ('MAT-102', 'Cálculo II', 1), -- Cálculo II, Exatas
-    ('MAT-103', 'Cálculo III', 1), -- Cálculo III, Exatas
-    ('CMP-101', 'Programação Orientada a Objetos', 2), -- POO, Computação
-    ('CMP-102', 'Banco de Dados', 2), -- BD, Computação
-    ('CMP-103', 'Sistemas Operacionais', 2), -- SO, Computação
-    ('CMP-104', 'Redes de Computadores', 2), -- Redes, Computação
-    ('BIO-101', 'Biologia Molecular', 3), -- Biologia Molecular, Biologia
-    ('BIO-102', 'Genética', 3); -- Genética, Biologia
+    ('MAT-101', 'Cálculo I'),
+    ('MAT-102', 'Cálculo II'),
+    ('MAT-103', 'Cálculo III'),
+    ('CMP-101', 'Programação Orientada a Objetos'),
+    ('CMP-102', 'Banco de Dados'),
+    ('CMP-103', 'Sistemas Operacionais'),
+    ('CMP-104', 'Redes de Computadores'),
+    ('BIO-101', 'Biologia Molecular'),
+    ('BIO-102', 'Genética');
 
 INSERT INTO
     TB_TURMA (CD_TURMA, ID_DISCIPLINA, ID_HORARIO, ID_PROFESSOR, ID_SALA)

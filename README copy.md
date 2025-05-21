@@ -32,7 +32,6 @@
 - Nome
 - Horários_Disponíveis (relação muitos-para-muitos com Horário)
 - Carga Horária Máxima
-- Departamento_ID
 
 **Disciplina**
 - ID
@@ -40,11 +39,6 @@
 - Código
 - Equipamentos Necessários
 - Capacidade Máxima de Alunos
-- Departamento_ID
-
-**Departamento**
-- ID
-- Nome
 
 **Equipamento**
 - ID
