@@ -1,4 +1,4 @@
--- Requisito 2.4: Consultar carga horária atual de um professor
+-- Requisito 3.1: Consultar carga horária atual de um professor
 SELECT 
     p.NO_PROFESSOR as professor,
     COALESCE(COUNT(DISTINCT t.ID_HORARIO) * 2, 0) as carga_horaria

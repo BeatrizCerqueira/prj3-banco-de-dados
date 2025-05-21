@@ -1,4 +1,4 @@
--- Requisito 2.1: Consultar capacidade da sala vs número de alunos matriculados
+-- Requisito 2.2: Consultar capacidade da sala vs número de alunos matriculados
 SELECT
     s.CD_SALA,
     t.CD_TURMA,
