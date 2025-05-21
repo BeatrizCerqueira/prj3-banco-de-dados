@@ -93,8 +93,5 @@
    2. Consultar todas as turmas de um aluno
 
 8. **Matricular alunos com deficiência apenas em salas com acessibilidade**
-    - Consultar salas acessíveis
-    - Consultar alunos com deficiência
-    - Consultar turmas em salas acessíveis
-    - Consultar disponibilidade de salas acessíveis
-    - Consultar distribuição de alunos com deficiência por sala
+   1. Consultar disponibilidade de turmas alocadas em salas acessíveis
+   2. Consultar porcentagem de alunos com deficiência por turma
