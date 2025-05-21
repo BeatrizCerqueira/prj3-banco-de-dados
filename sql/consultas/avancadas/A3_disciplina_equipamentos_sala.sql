@@ -1,4 +1,18 @@
 -- Requisito 2.1: Consultar se uma sala tem todos os equipamentos necessários para uma disciplina
+WITH equipamentos_faltantes AS (
+    SELECT 
+        d.ID_DISCIPLINA,
+        s.ID_SALA,
+        rde.ID_EQUIPAMENTO
+    FROM 
+        TB_DISCIPLINA d
+        CROSS JOIN TB_SALA s
+        JOIN RL_DISCIPLINA_EQUIPAMENTO rde ON d.ID_DISCIPLINA = rde.ID_DISCIPLINA
+        LEFT JOIN RL_SALA_EQUIPAMENTO rse ON s.ID_SALA = rse.ID_SALA 
+            AND rse.ID_EQUIPAMENTO = rde.ID_EQUIPAMENTO
+    WHERE 
+        rse.ID_EQUIPAMENTO IS NULL
+)
 SELECT 
     d.CD_DISCIPLINA,
     d.NO_DISCIPLINA,
@@ -7,15 +21,10 @@ SELECT
     STRING_AGG(DISTINCT es.NO_EQUIPAMENTO, ', ') as equipamentos_sala,
     CASE 
         WHEN NOT EXISTS (
-            SELECT rde.ID_EQUIPAMENTO
-            FROM RL_DISCIPLINA_EQUIPAMENTO rde
-            WHERE rde.ID_DISCIPLINA = d.ID_DISCIPLINA
-            AND NOT EXISTS (
-                SELECT rse.ID_EQUIPAMENTO
-                FROM RL_SALA_EQUIPAMENTO rse
-                WHERE rse.ID_SALA = s.ID_SALA
-                AND rse.ID_EQUIPAMENTO = rde.ID_EQUIPAMENTO
-            )
+            SELECT 1 
+            FROM equipamentos_faltantes ef 
+            WHERE ef.ID_DISCIPLINA = d.ID_DISCIPLINA 
+            AND ef.ID_SALA = s.ID_SALA
         ) THEN 'Sim'
         ELSE 'Não'
     END as sala_atende

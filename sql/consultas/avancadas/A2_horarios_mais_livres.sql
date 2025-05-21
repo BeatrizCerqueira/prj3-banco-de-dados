@@ -5,7 +5,13 @@ SELECT
     h.DH_FIM,
     COUNT(s.ID_SALA) as total_salas,
     COUNT(t.ID_TURMA) as salas_ocupadas,
-    COUNT(s.ID_SALA) - COUNT(t.ID_TURMA) as salas_livres
+    COUNT(s.ID_SALA) - COUNT(t.ID_TURMA) as salas_livres,
+    STRING_AGG(
+        CASE 
+            WHEN t.ID_TURMA IS NULL THEN s.CD_SALA 
+        END,
+        ', '
+    ) as salas_livres_lista
 FROM 
     TB_HORARIO h
     CROSS JOIN TB_SALA s
