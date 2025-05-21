@@ -92,10 +92,8 @@
    2. Consultar capacidade da sala vs número de alunos matriculados
 
 3. **Controlar disponibilidade de professores**
-   - Consultar horários disponíveis de um professor
-   - Consultar carga horária atual de um professor
-   - Consultar professores disponíveis em um horário específico
-   - Consultar disciplinas que um professor pode lecionar
+   1. Consultar carga horária atual de um professor
+   2. Consultar horários disponíveis de um professor
 
 4. **Gerenciar equipamentos disponíveis em cada sala**
    - Consultar equipamentos de uma sala
