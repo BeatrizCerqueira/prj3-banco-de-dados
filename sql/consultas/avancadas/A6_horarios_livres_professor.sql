@@ -31,16 +31,3 @@ ORDER BY
     p.NO_PROFESSOR,
     h.CD_DIA_SEMANA,
     h.DH_INICIO;
-
--- Requisito 2.6: Listar equipamentos de uma sala
-SELECT 
-    s.CD_SALA as sala,
-    e.NO_EQUIPAMENTO as equipamento,
-    e.DS_EQUIPAMENTO as descricao
-FROM 
-    TB_SALA s
-    JOIN RL_SALA_EQUIPAMENTO rse ON rse.ID_SALA = s.ID_SALA
-    JOIN TB_EQUIPAMENTO e ON e.ID_EQUIPAMENTO = rse.ID_EQUIPAMENTO
-ORDER BY 
-    s.CD_SALA,
-    e.NO_EQUIPAMENTO; 
