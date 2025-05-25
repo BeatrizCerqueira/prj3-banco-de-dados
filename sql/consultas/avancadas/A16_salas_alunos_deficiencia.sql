@@ -1,4 +1,4 @@
--- Requisito 8.2: Consultar porcentagem de alunos com deficiência por turma
+-- Requisito 8.2: Consultar porcentagem de alunos com deficiência de uma turma
 SELECT 
     t.CD_TURMA,
     d.CD_DISCIPLINA,

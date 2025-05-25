@@ -94,4 +94,12 @@
 
 8. **Matricular alunos com deficiência apenas em salas com acessibilidade**
    1. Consultar disponibilidade de turmas alocadas em salas acessíveis
-   2. Consultar porcentagem de alunos com deficiência por turma
+   2. Consultar porcentagem de alunos com deficiência de uma turma
+
+9. **Gerenciar a distribuição de carga horária dos professores**
+   1. Consultar carga horária de um professor
+   2. Consultar distribuição de disciplinas de um professor
+
+10. **Gerenciar a distribuição de carga horária dos alunos**
+   1. Consultar alunos carga horária de um aluno
+   2. Consultar distribuição de disciplinas de um professor
