@@ -101,5 +101,5 @@
    2. Consultar distribuição de disciplinas de um professor
 
 10. **Gerenciar a distribuição de carga horária dos alunos**
-   1. Consultar alunos carga horária de um aluno
-   2. Consultar distribuição de disciplinas de um professor
+   1. Consultar carga horária de um aluno
+   2. Consultar dias da semana com maior carga horária de um aluno
