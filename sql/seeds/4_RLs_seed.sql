@@ -38,6 +38,7 @@ INSERT INTO
 VALUES
     (1, 1), -- Turma 1, Ana Costa
     (3, 1), -- Turma 3, Ana Costa
+    (1, 2), -- Turma 1, Bruno Lima
     (2, 2), -- Turma 2, Bruno Lima
     (4, 2), -- Turma 4, Bruno Lima
     (3, 3), -- Turma 3, Carlos Ferreira
@@ -50,7 +51,7 @@ VALUES
     (5, 6), -- Turma 5, Gabriel Oliveira
     (3, 7), -- Turma 3, João da Silva
     (4, 7), -- Turma 4, João da Silva
-    (1, 8), -- Turma 1, Kauã Oliveira
+    -- (1, 8), -- Turma 1, Kauã Oliveira // Problema de superlotação!
     (5, 8), -- Turma 5, Kauã Oliveira
     (2, 9), -- Turma 2, Luana Lima
     (5, 9), -- Turma 5, Luana Lima

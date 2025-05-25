@@ -1,4 +1,4 @@
--- Requisito 2.1: Consultar se uma sala tem todos os equipamentos necessários para uma disciplina
+-- Requisito 2.2: Consultar quais salas têm todos os equipamentos necessários para uma disciplina
 WITH
     equipamentos_faltantes AS (
         SELECT

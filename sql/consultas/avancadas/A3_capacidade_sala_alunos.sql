@@ -1,10 +1,11 @@
--- Requisito 2.2: Consultar capacidade da sala vs número de alunos matriculados
+-- Requisito 2.1: Consultar capacidade da sala vs número de alunos matriculados
 SELECT
     s.CD_SALA,
     h.CD_DIA_SEMANA,
     h.DH_INICIO,
     h.DH_FIM,
     s.QT_CAPACIDADE,
+    t.CD_TURMA,
     COUNT(rta.ID_ALUNO) as alunos_matriculados,
     s.QT_CAPACIDADE - COUNT(rta.ID_ALUNO) as vagas_disponiveis
 FROM
@@ -18,7 +19,8 @@ GROUP BY
     h.CD_DIA_SEMANA,
     h.DH_INICIO,
     h.DH_FIM,
-    s.QT_CAPACIDADE
+    s.QT_CAPACIDADE,
+    t.CD_TURMA
 ORDER BY
     s.CD_SALA,
     h.CD_DIA_SEMANA,

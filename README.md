@@ -67,8 +67,8 @@
    2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
-   1. Consultar se uma sala tem todos os equipamentos necessários para uma disciplina
-   2. Consultar capacidade da sala vs número de alunos matriculados
+   1. Consultar capacidade da sala vs número de alunos matriculados
+   2. Consultar quais salas têm todos os equipamentos necessários para uma disciplina
 
 3. **Controlar disponibilidade de professores**
    1. Consultar carga horária atual de um professor
@@ -96,7 +96,7 @@
    1. Consultar disponibilidade de turmas alocadas em salas acessíveis
    2. Consultar porcentagem de alunos com deficiência de uma turma
 
-9. **Gerenciar a distribuição de carga horária dos professores**
+9. [TODO] REFAZER **Gerenciar a distribuição de carga horária dos professores**
    1. Consultar carga horária de um professor
    2. Consultar distribuição de disciplinas de um professor
 
