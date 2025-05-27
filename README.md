@@ -63,43 +63,77 @@
 ### Originais
 
 1. **Gerenciar disciplinas, horários e matrículas**
-   1. Consultar quantidade de matrículas em uma turma
-   2. Consultar horários com mais salas livres
+   * Queries:
+      1. Consultar quantidade de matrículas em uma turma
+      2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
-   1. Consultar capacidade da sala vs número de alunos matriculados
-   2. Consultar quais salas têm todos os equipamentos necessários para uma disciplina
+   * Queries:
+      1. [Demanda] Consultar capacidade da sala vs número de alunos matriculados
+      2. [Requisitos técnicos] Consultar quais salas têm todos os equipamentos necessários para uma disciplina
+   * Requisitos estendidos:
+      <ol start="3">
+         <li>[Demanda] Só permitir matrícula de um aluno em uma turma caso a sala não esteja na capacidade máxima</li>
+         <li>[Requisitos técnicos] Só permitir alocação de uma turma em uma sala caso a sala contenha todos os equipamentos necessários para aquela disciplina</li>
+      </ol>
 
 3. **Controlar disponibilidade de professores**
-   1. Consultar carga horária atual de um professor
-   2. Consultar horários disponíveis de um professor
+   * Queries:
+      1. Consultar horários disponíveis de um professor
+      2. Consultar dias da semana com maior carga horária de um professor 
+   * Requisitos estendidos:
+      <ol start="3">
+         <li>Só permitir vincular um professor a uma turma caso ele não tenha outra turma no mesmo horário</li>
+      </ol>
 
 4. **Gerenciar equipamentos disponíveis em cada sala**
-   1. Consultar equipamentos com maior estoque
-   2. Consultar disponibilidade de equipamentos em um horário
+   * Queries:
+      1. Consultar equipamentos com maior estoque
+      2. Consultar disponibilidade de equipamentos em um horário
 
 5. **Gerar relatórios de ocupação**
-   1. Consultar quantidade de turmas em uma sala
-   2. Consultar horários ocupados em uma sala
+   * Queries:
+      1. Consultar quantidade de turmas em uma sala
+      2. Consultar horários ocupados em uma sala
 
 6. **Evitar conflitos de horário e superlotação**
-   1. Consultar horários mais requisitados (com mais turmas alocadas)
-   2. Consultar turmas próximas da capacidade máxima
+   * Queries:
+      1. [Conflitos de horário] Consultar horários mais requisitados (com mais turmas alocadas)
+      2. [Superlotação] Consultar turmas próximas da capacidade máxima
+   * Requisitos estendidos:
+      <ol start="3">
+         <li>[Conflitos de horário] Só permitir vincular um professor a uma turma caso ele não tenha outra turma no mesmo horário (mesmo que o 3.3)</li>
+         <li>[Conflitos de horário] Só permitir matricular um aluno em uma turma caso ele não tenha outra turma no mesmo horário</li>
+         <li>[Conflitos de horário] Só permitir alocar uma sala para uma turma caso a sala não tenha outra turma no mesmo horário</li>
+         <li>[Superlotação] Só permitir matrícula de um aluno em uma turma caso a sala não esteja na capacidade máxima (mesmo que o 2.3)</li>
+      </ol>
 
 ### Estendidos
 
 7. **Limitar para que alunos não estejam matriculados em mais de uma turma da mesma disciplina**
-   1. Consultar disciplinas com múltiplas turmas
-   2. Consultar todas as turmas de um aluno
+   * Queries:
+      1. Consultar disciplinas com múltiplas turmas
+      2. Consultar todas as turmas de um aluno
+   * Requisitos estendidos:
+      <ol start="3">
+         <li>Só permitir matrícula de um aluno em uma turma caso ele não esteja matriculado em outra turma da mesma disciplina</li>
+      </ol>
 
 8. **Matricular alunos com deficiência apenas em salas com acessibilidade**
-   1. Consultar disponibilidade de turmas alocadas em salas acessíveis
-   2. Consultar porcentagem de alunos com deficiência de uma turma
+   * Queries:
+      1. Consultar disponibilidade de turmas alocadas em salas acessíveis
+      2. Consultar porcentagem de alunos com deficiência de uma turma
+   * Requisitos estendidos:
+      <ol start="3">
+         <li>Só permitir matrícula de um aluno com deficiência em uma turma caso ela seja acessível</li>
+      </ol>
 
-9. [TODO] REFAZER **Gerenciar a distribuição de carga horária dos professores**
-   1. Consultar carga horária de um professor
-   2. Consultar distribuição de disciplinas de um professor
+9. **Gerenciar a distribuição de carga horária dos professores**
+   * Queries:
+      1. Consultar carga horária de um professor
+      2. Consultar distribuição de disciplinas de um professor
 
 10. **Gerenciar a distribuição de carga horária dos alunos**
-   1. Consultar carga horária de um aluno
-   2. Consultar dias da semana com maior carga horária de um aluno
+   * Queries:
+      1. Consultar carga horária de um aluno
+      2. Consultar dias da semana com maior carga horária de um aluno

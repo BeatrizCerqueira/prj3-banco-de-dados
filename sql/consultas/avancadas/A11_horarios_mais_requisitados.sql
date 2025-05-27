@@ -1,4 +1,4 @@
--- Requisito 6.1: Consultar horários mais requisitados (com mais turmas alocadas)
+-- Requisito 6.1: [Conflitos de horário] Consultar horários mais requisitados (com mais turmas alocadas)
 SELECT
     h.CD_DIA_SEMANA as dia_semana,
     h.DH_INICIO as hora_inicio,

@@ -1,4 +1,4 @@
--- Requisito 6.2: Consultar turmas próximas da capacidade máxima
+-- Requisito 6.2: [Superlotação] Consultar turmas próximas da capacidade máxima
 SELECT
     t.CD_TURMA as turma,
     s.CD_SALA as sala,
