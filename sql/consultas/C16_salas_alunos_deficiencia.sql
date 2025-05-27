@@ -1,13 +1,22 @@
 -- Requisito 8.2: Consultar porcentagem de alunos com deficiência de uma turma
-SELECT 
+SELECT
     t.CD_TURMA,
     d.CD_DISCIPLINA,
     d.NO_DISCIPLINA,
     COUNT(rta.ID_ALUNO) as QT_TOTAL_ALUNOS,
-    COUNT(CASE WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1 END) as QT_ALUNOS_DEFICIENCIA,
+    COUNT(
+        CASE
+            WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1
+        END
+    ) as QT_ALUNOS_DEFICIENCIA,
     ROUND(
-        (COUNT(CASE WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1 END)::numeric / 
-        NULLIF(COUNT(rta.ID_ALUNO), 0)) * 100,
+        (
+            COUNT(
+                CASE
+                    WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1
+                END
+            )::numeric / NULLIF(COUNT(rta.ID_ALUNO), 0)
+        ) * 100,
         2
     ) as PORCENTAGEM_ALUNOS_DEFICIENCIA
 FROM
@@ -21,4 +30,4 @@ GROUP BY
     d.NO_DISCIPLINA
 ORDER BY
     PORCENTAGEM_ALUNOS_DEFICIENCIA DESC NULLS LAST,
-    d.CD_DISCIPLINA; 
+    d.CD_DISCIPLINA;

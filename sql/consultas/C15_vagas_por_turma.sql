@@ -1,5 +1,5 @@
 -- Requisito 8.1: Consultar disponibilidade de turmas alocadas em salas acessíveis
-SELECT 
+SELECT
     t.CD_TURMA,
     d.CD_DISCIPLINA,
     d.NO_DISCIPLINA,
@@ -24,4 +24,4 @@ GROUP BY
     s.QT_CAPACIDADE
 ORDER BY
     d.CD_DISCIPLINA,
-    t.CD_TURMA; 
+    t.CD_TURMA;

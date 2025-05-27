@@ -1,5 +1,5 @@
 -- Requisito 7.2: Consultar todas as turmas de um aluno
-SELECT 
+SELECT
     a.NO_ALUNO,
     t.CD_TURMA,
     d.CD_DISCIPLINA,
@@ -18,4 +18,4 @@ GROUP BY
     d.NO_DISCIPLINA
 ORDER BY
     a.NO_ALUNO,
-    d.CD_DISCIPLINA; 
+    d.CD_DISCIPLINA;

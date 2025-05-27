@@ -1,5 +1,5 @@
 -- Requisito 7.1: Consultar disciplinas com múltiplas turmas
-SELECT 
+SELECT
     d.CD_DISCIPLINA,
     d.NO_DISCIPLINA,
     COUNT(t.ID_TURMA) as QT_TURMAS
@@ -11,4 +11,4 @@ GROUP BY
     d.NO_DISCIPLINA
 ORDER BY
     COUNT(t.ID_TURMA) DESC,
-    d.CD_DISCIPLINA; 
+    d.CD_DISCIPLINA;
