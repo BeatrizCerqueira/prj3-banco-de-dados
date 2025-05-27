@@ -119,8 +119,9 @@ VALUES
     ('TURMA-005', 4, 1, 3, 4), -- Turma 5, POO, SEG 10:00-12:00, Carlos Silva, Sala E
     ('TURMA-006', 4, 2, 3, 4), -- Turma 6, POO, SEG 13:00-15:00, Carlos Silva, Sala F
     ('TURMA-007', 8, 3, 2, 1), -- Turma 7, Biologia Molecular, QUA 16:00-18:00, Beatriz Lima, Sala A
-    ('TURMA-008', 9, 1, 1, 2); -- Turma 8, Cálculo I, SEG 10:00-12:00, Ana Souza, Sala B
+    ('TURMA-008', 9, 1, 1, 2);
 
+-- Turma 8, Cálculo I, SEG 10:00-12:00, Ana Souza, Sala B
 INSERT INTO
     RL_TURMA_ALUNO (ID_TURMA, ID_ALUNO)
 VALUES
