@@ -1,6 +1,7 @@
 # mata60-banco-de-dados
 
 ## Descrição
+[TODO]
 
 ## Modelo de Dados
 
@@ -137,3 +138,112 @@
    * Queries:
       1. Consultar carga horária de um aluno
       2. Consultar dias da semana com maior carga horária de um aluno
+
+## Configuração do Banco de Dados
+
+### Requisitos
+
+- Docker
+- Docker Compose
+
+### Estrutura de Diretórios
+
+```
+sql/
+├── tabelas/       # Scripts de criação das tabelas
+├── seeds/         # Scripts de população do banco
+└── consultas/     # Queries do projeto
+```
+
+### Configuração Inicial
+
+1. Clone o repositório:
+```bash
+git clone git@github.com:BeatrizCerqueira/mata60-banco-de-dados.git
+cd mata60-banco-de-dados
+```
+
+2. Inicie o banco de dados usando Docker:
+```bash
+make run-db
+```
+
+Este comando irá:
+- Buildar a imagem do PostgreSQL
+- Criar e iniciar o container
+- Executar os scripts de criação das tabelas
+- Popular o banco com dados iniciais
+
+### Executando Queries
+
+1. Conecte ao banco de dados:
+```bash
+docker exec -it prj3-database psql -U usuario -d base-de-dados
+```
+
+2. No terminal do container que irá abrir, execute a query desejada:
+```bash
+\i /docker-entrypoint-initdb.d/C1_matriculas_por_turma.sql
+```
+O mesmo se aplica às demais queries.
+
+### Parâmetros de Conexão
+
+- Host: localhost
+- Porta: 5432
+- Banco: base-de-dados
+- Usuário: usuario
+- Senha: (vazia)
+
+### Comandos Úteis
+
+- Iniciar o banco: `make run-db`
+- Parar o banco: `make run-down`
+- Reiniciar o banco: `make restart`
+
+## Avaliação de Desempenho
+
+Para avaliar o desempenho das consultas SQL, foi criado um script Python que mede o tempo de execução de cada consulta. O script executa cada consulta 20 vezes e calcula estatísticas como tempo médio, desvio padrão, tempo mínimo e máximo.
+
+### Requisitos
+
+- Python 3.x
+- PostgreSQL
+- Pacotes Python listados em `requirements.txt`
+
+### Instalação
+
+1. Instale as dependências Python:
+```bash
+pip install -r requirements.txt
+```
+
+2. Certifique-se que o banco de dados PostgreSQL está rodando:
+```bash
+make run-db
+```
+
+### Execução
+
+Para executar a avaliação de desempenho:
+
+```bash
+python script.py
+```
+
+O script irá:
+1. Executar cada consulta 20 vezes
+2. Mostrar o progresso durante a execução
+3. Exibir uma tabela com os resultados ordenados por tempo médio
+4. Salvar os resultados em `resultado.csv`
+
+### Resultados
+
+Os resultados incluem:
+- Nome da consulta
+- Tempo médio de execução (em milissegundos)
+- Desvio padrão (em milissegundos)
+- Tempo mínimo de execução (em milissegundos)
+- Tempo máximo de execução (em milissegundos)
+
+O script inclui uma execução de aquecimento antes das medições para garantir resultados mais consistentes e trata erros de forma adequada, continuando a medir outras consultas mesmo se uma falhar.
