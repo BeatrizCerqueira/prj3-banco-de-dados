@@ -59,17 +59,17 @@
 - ID_TURMA (FK)
 - ID_ALUNO (FK)
 
-## Requisitos/Queries
+## Requisitos/Consultas
 
 ### Originais
 
 1. **Gerenciar disciplinas, horários e matrículas**
-   * Queries:
+   * Consultas:
       1. Consultar quantidade de matrículas em uma turma
       2. Consultar horários com mais salas livres
 
 2. **Alocar salas conforme demanda e requisitos técnicos**
-   * Queries:
+   * Consultas:
       1. [Demanda] Consultar capacidade da sala vs número de alunos matriculados
       2. [Requisitos técnicos] Consultar quais salas têm todos os equipamentos necessários para uma disciplina
    * Requisitos estendidos:
@@ -79,7 +79,7 @@
       </ol>
 
 3. **Controlar disponibilidade de professores**
-   * Queries:
+   * Consultas:
       1. Consultar horários disponíveis de um professor
       2. Consultar dias da semana com maior carga horária de um professor 
    * Requisitos estendidos:
@@ -88,17 +88,17 @@
       </ol>
 
 4. **Gerenciar equipamentos disponíveis em cada sala**
-   * Queries:
+   * Consultas:
       1. Consultar equipamentos com maior estoque
       2. Consultar disponibilidade de equipamentos em um horário
 
 5. **Gerar relatórios de ocupação**
-   * Queries:
+   * Consultas:
       1. Consultar quantidade de turmas em uma sala
       2. Consultar horários ocupados em uma sala
 
 6. **Evitar conflitos de horário e superlotação**
-   * Queries:
+   * Consultas:
       1. [Conflitos de horário] Consultar horários mais requisitados (com mais turmas alocadas)
       2. [Superlotação] Consultar turmas próximas da capacidade máxima
    * Requisitos estendidos:
@@ -112,7 +112,7 @@
 ### Estendidos
 
 7. **Limitar para que alunos não estejam matriculados em mais de uma turma da mesma disciplina**
-   * Queries:
+   * Consultas:
       1. Consultar disciplinas com múltiplas turmas
       2. Consultar todas as turmas de um aluno
    * Requisitos estendidos:
@@ -121,7 +121,7 @@
       </ol>
 
 8. **Matricular alunos com deficiência apenas em salas com acessibilidade**
-   * Queries:
+   * Consultas:
       1. Consultar disponibilidade de turmas alocadas em salas acessíveis
       2. Consultar porcentagem de alunos com deficiência de uma turma
    * Requisitos estendidos:
@@ -130,12 +130,12 @@
       </ol>
 
 9. **Gerenciar a distribuição de carga horária dos professores**
-   * Queries:
+   * Consultas:
       1. Consultar carga horária de um professor
       2. Consultar distribuição de disciplinas de um professor
 
 10. **Gerenciar a distribuição de carga horária dos alunos**
-   * Queries:
+   * Consultas:
       1. Consultar carga horária de um aluno
       2. Consultar dias da semana com maior carga horária de um aluno
 
@@ -145,15 +145,6 @@
 
 - Docker
 - Docker Compose
-
-### Estrutura de Diretórios
-
-```
-sql/
-├── tabelas/       # Scripts de criação das tabelas
-├── seeds/         # Scripts de população do banco
-└── consultas/     # Queries do projeto
-```
 
 ### Configuração Inicial
 
@@ -174,18 +165,18 @@ Este comando irá:
 - Executar os scripts de criação das tabelas
 - Popular o banco com dados iniciais
 
-### Executando Queries
+### Executando Consultas
 
 1. Conecte ao banco de dados:
 ```bash
 docker exec -it prj3-database psql -U usuario -d base-de-dados
 ```
 
-2. No terminal do container que irá abrir, execute a query desejada:
+2. No terminal do container que irá abrir, execute a consulta desejada:
 ```bash
 \i /docker-entrypoint-initdb.d/C1_matriculas_por_turma.sql
 ```
-O mesmo se aplica às demais queries.
+O mesmo se aplica às demais consulta.
 
 ### Parâmetros de Conexão
 
@@ -205,45 +196,42 @@ O mesmo se aplica às demais queries.
 
 Para avaliar o desempenho das consultas SQL, foi criado um script Python que mede o tempo de execução de cada consulta. O script executa cada consulta 20 vezes e calcula estatísticas como tempo médio, desvio padrão, tempo mínimo e máximo.
 
+O script inclui uma execução de aquecimento antes das medições para garantir resultados mais consistentes e trata erros de forma adequada, continuando a medir outras consultas mesmo se uma falhar.
+
 ### Requisitos
 
-- Python 3.x
-- PostgreSQL
-- Pacotes Python listados em `requirements.txt`
-
-### Instalação
-
-1. Instale as dependências Python:
-```bash
-pip install -r requirements.txt
-```
-
-2. Certifique-se que o banco de dados PostgreSQL está rodando:
-```bash
-make run-db
-```
+- Docker
+- Docker Compose
 
 ### Execução
 
 Para executar a avaliação de desempenho:
 
 ```bash
-python script.py
+make avaliar-desempenho
 ```
 
 O script irá:
-1. Executar cada consulta 20 vezes
-2. Mostrar o progresso durante a execução
-3. Exibir uma tabela com os resultados ordenados por tempo médio
-4. Salvar os resultados em `resultado.csv`
+1. Para cada configuração (sem indexação e planos 1, 2 e 3):
+   - Aplicar o plano de indexação (exceto para sem indexação)
+   - Executar cada consulta 20 vezes
+   - Calcular tempo médio, desvio padrão, tempos mínimo e máximo
+   - Salvar os resultados em `resultados/<plano>/execucoes.csv`
+2. Gerar resumo comparativo com métricas gerais de cada plano em `resultados/resumo.csv`
 
 ### Resultados
 
-Os resultados incluem:
-- Nome da consulta
-- Tempo médio de execução (em milissegundos)
-- Desvio padrão (em milissegundos)
-- Tempo mínimo de execução (em milissegundos)
-- Tempo máximo de execução (em milissegundos)
+Os resultados são salvos em dois arquivos:
 
-O script inclui uma execução de aquecimento antes das medições para garantir resultados mais consistentes e trata erros de forma adequada, continuando a medir outras consultas mesmo se uma falhar.
+1. `execucoes.csv` (em cada pasta de plano):
+   - Nome da consulta
+   - Tempo médio de execução (em milissegundos)
+   - Desvio padrão (em milissegundos)
+   - Tempo mínimo de execução (em milissegundos)
+   - Tempo máximo de execução (em milissegundos)
+
+2. `resumo.csv` (na pasta resultados):
+   - Nome do plano
+   - Média geral de tempo de execução
+   - Desvio padrão geral
+

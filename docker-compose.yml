@@ -6,3 +6,22 @@ services:
     image: prj3-postgres:latest
     ports:
       - '5432:5432'
+    networks:
+      - prj3-network
+
+  python:
+    container_name: prj3-python
+    image: python:3.11
+    volumes:
+      - ./avaliacao_de_desempenho:/app
+      - ./sql/consultas:/app/consultas
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements.txt &&
+             tail -f /dev/null"
+    networks:
+      - prj3-network
+
+networks:
+  prj3-network:
+    name: prj3-network
