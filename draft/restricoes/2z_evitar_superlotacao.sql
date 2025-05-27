@@ -1,7 +1,7 @@
 -- Requisito 6: Evitar conflitos de horário e superlotação
 
 -- Função para garantir que a sala tenha capacidade para mais um aluno
-CREATE OR REPLACE FUNCTION evitar_superlotacao()
+CREATE OR REPLACE FUNCTION FC_EVITAR_SUPERLOTACAO()
 RETURNS TRIGGER AS $$
 DECLARE
     capacidade_sala INTEGER;
@@ -39,7 +39,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Trigger que executa a verificação antes de inserir uma nova matrícula
-CREATE TRIGGER trg_verificar_capacidade_sala
+CREATE TRIGGER TG_B_I_VERIFICAR_CAPACIDADE_SALA
     BEFORE INSERT ON RL_TURMA_ALUNO
     FOR EACH ROW
-    EXECUTE FUNCTION evitar_superlotacao(); 
+    EXECUTE FUNCTION FC_EVITAR_SUPERLOTACAO(); 

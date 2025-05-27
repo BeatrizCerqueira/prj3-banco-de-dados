@@ -1,7 +1,7 @@
 -- -- Requisito 2: Alocar salas conforme demanda e requisitos técnicos
 
 -- -- Função para garantir que a sala tenha todos os equipamentos necessários para a disciplina
--- CREATE OR REPLACE FUNCTION cumprir_requisitos_tecnicos()
+-- CREATE OR REPLACE FUNCTION FC_CUMPRIR_REQUISITOS_TECNICOS()
 -- RETURNS TRIGGER AS $$
 -- DECLARE
 --     equipamentos_faltantes TEXT;
@@ -37,7 +37,7 @@
 -- $$ LANGUAGE plpgsql;
 
 -- -- Trigger que executa a verificação antes de inserir uma nova turma
--- CREATE TRIGGER trg_verificar_equipamentos_sala
+-- CREATE TRIGGER TG_B_IU_VERIFICAR_EQUIPAMENTOS_SALA
 --     BEFORE INSERT OR UPDATE ON TB_TURMA
 --     FOR EACH ROW
---     EXECUTE FUNCTION cumprir_requisitos_tecnicos(); 
+--     EXECUTE FUNCTION FC_CUMPRIR_REQUISITOS_TECNICOS(); 
