@@ -1,7 +1,7 @@
 # [PRJ3] Sistema para Alocação de Salas e Professores
 
 ## Descrição
-A distribuição de disciplinas, salas e professores enfrenta desafios logísticos complexos. O objetivo deste projeto é modelar e implementar um banco de dados que otimiza essa alocação, considerando a capacidade das salas, equipamentos disponíveis e número de alunos matriculados, garantindo uma distribuição eficiente dos recursos acadêmicos.
+A gestão acadêmica de disciplinas, turmas, professores, salas e equipamentos envolve um conjunto de decisões interdependentes que impactam diretamente na qualidade do ensino e na eficiência institucional. Este projeto tem como objetivo modelar e implementar um banco de dados capaz de auxiliar a alocação de recursos acadêmicos, considerando fatores como capacidade das salas, disponibilidade de equipamentos, horários e matrícula dos alunos. A proposta busca apoiar a tomada de decisão de forma precisa, garantindo o cumprimento de requisitos técnicos, demandas institucionais e políticas de inclusão.
 
 ## Requisitos
 

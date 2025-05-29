@@ -7,7 +7,7 @@ SELECT
     s.QT_CAPACIDADE - COUNT(DISTINCT rta.ID_ALUNO) as vagas_disponiveis,
     ROUND(
         (
-            COUNT(DISTINCT rta.ID_ALUNO)::numeric / NULLIF(s.QT_CAPACIDADE, 0)
+            CAST(COUNT(DISTINCT rta.ID_ALUNO) AS numeric) / NULLIF(s.QT_CAPACIDADE, 0)
         ) * 100,
         2
     ) as percentual_ocupacao

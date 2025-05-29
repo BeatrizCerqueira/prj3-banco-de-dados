@@ -77,10 +77,10 @@ avaliar-desempenho:
 	@make run-down
 
 executar-consulta:
-	 @if [ -z "$(CONSULTA)" ]; then \
+	@if [ -z "$(CONSULTA)" ]; then \
 	  echo "Erro: Especifique o número da consulta. Exemplo: make executar-consulta CONSULTA=1"; \
 	  exit 1; \
-	 fi
-	 @NUMERO_FORMATADO=$$(printf "%02d" $(CONSULTA)); \
-	 echo "Executando consulta C$${NUMERO_FORMATADO}_* do diretório /opt/consultas/ ..."; \
-	 docker exec prj3-database sh -c "psql -U usuario -d base-de-dados -f /opt/consultas/C$${NUMERO_FORMATADO}_*.sql"
+	fi
+	@NUMERO_FORMATADO=$$(printf "%02d" $(CONSULTA)); \
+	echo "Executando consulta C$${NUMERO_FORMATADO}_* do diretório /opt/consultas/ ..."; \
+	docker exec prj3-database sh -c "psql -U usuario -d base-de-dados -f /opt/consultas/C$${NUMERO_FORMATADO}_*.sql"

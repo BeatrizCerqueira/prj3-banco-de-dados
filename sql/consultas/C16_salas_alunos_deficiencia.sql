@@ -11,11 +11,13 @@ SELECT
     ) as QT_ALUNOS_DEFICIENCIA,
     ROUND(
         (
-            COUNT(
-                CASE
-                    WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1
-                END
-            )::numeric / NULLIF(COUNT(rta.ID_ALUNO), 0)
+            CAST(
+                COUNT(
+                    CASE
+                        WHEN a.IS_PESSOA_COM_DEFICIENCIA = true THEN 1
+                    END
+                ) AS numeric
+            ) / NULLIF(COUNT(rta.ID_ALUNO), 0)
         ) * 100,
         2
     ) as PORCENTAGEM_ALUNOS_DEFICIENCIA

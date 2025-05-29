@@ -38,9 +38,8 @@ VALUES
     (7, 2), -- Redes, Computador
     (8, 1), -- Biologia Molecular, Projetor
     (8, 4), -- Biologia Molecular, Microscópio
-    (9, 4);
+    (9, 4); -- Genética, Microscópio
 
--- Genética, Microscópio
 INSERT INTO
     TB_SALA (CD_SALA, QT_CAPACIDADE, IS_ACESSIVEL)
 VALUES
@@ -65,9 +64,8 @@ VALUES
     (3, 5), -- Sala C, Tablet
     (4, 2), -- Sala D, Computador
     (4, 3), -- Sala D, Quadro Branco
-    (5, 4);
+    (5, 4); -- Sala E, Microscópio
 
--- Sala E, Microscópio
 INSERT INTO
     TB_HORARIO (CD_DIA_SEMANA, DH_INICIO, DH_FIM)
 VALUES
@@ -119,9 +117,8 @@ VALUES
     ('TURMA-005', 4, 1, 3, 4), -- Turma 5, POO, SEG 10:00-12:00, Carlos Silva, Sala E
     ('TURMA-006', 4, 2, 3, 4), -- Turma 6, POO, SEG 13:00-15:00, Carlos Silva, Sala F
     ('TURMA-007', 8, 3, 2, 1), -- Turma 7, Biologia Molecular, QUA 16:00-18:00, Beatriz Lima, Sala A
-    ('TURMA-008', 9, 1, 1, 2);
+    ('TURMA-008', 9, 1, 1, 2); -- Turma 8, Genética, SEG 10:00-12:00, Ana Souza, Sala B
 
--- Turma 8, Cálculo I, SEG 10:00-12:00, Ana Souza, Sala B
 INSERT INTO
     RL_TURMA_ALUNO (ID_TURMA, ID_ALUNO)
 VALUES
@@ -144,6 +141,4 @@ VALUES
     (2, 9), -- Turma 2, Luana Lima
     (5, 9), -- Turma 5, Luana Lima
     (3, 10), -- Turma 3, Maria Oliveira
-    (4, 10);
-
--- Turma 4, Maria Oliveira
+    (4, 10); -- Turma 4, Maria Oliveira

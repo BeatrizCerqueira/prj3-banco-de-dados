@@ -13,12 +13,12 @@ CONTEXT = os.getenv('CONTEXT', 'local')  # Default para 'local' se não definida
 
 if CONTEXT == 'DOCKER':
     DB_HOST = 'prj3-database'
-    SUMMARY_PATH_BASE = Path('/app/resultados')
+    PATH_BASE = Path('/app/resultados')
 else:
     DB_HOST = 'localhost'
-    SUMMARY_PATH_BASE = Path('./avaliacao_de_desempenho/resultados')
+    PATH_BASE = Path('./avaliacao_de_desempenho/resultados')
 
-SUMMARY_PATH = SUMMARY_PATH_BASE / "resumo.csv"
+SUMMARY_PATH = PATH_BASE / "resumo.csv"
 
 # Parâmetros de conexão com o banco de dados
 DB_PARAMS = {
@@ -70,13 +70,7 @@ def validate_arguments():
     return sys.argv[1]
 
 def setup_output_directory(pasta):
-    # O caminho base para 'resultados' dentro do contêiner ou localmente
-    if CONTEXT == 'DOCKER':
-        base_output_path = Path('/app/resultados')
-    else:
-        base_output_path = Path('./resultados')
-
-    output_path = base_output_path / pasta / "execucoes.csv"
+    output_path = PATH_BASE / pasta / "execucoes.csv"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     return output_path
 
@@ -111,8 +105,8 @@ def save_results(df, output_path):
 def calculate_plan_summary(df, plan_name):
     return {
         'plano': plan_name,
-        'media_geral_ms': round(df['avg_time_ms'].mean(), 2),
-        'desvio_padrao_geral_ms': round(df['std_dev_ms'].mean(), 2)
+        'avg_geral_ms': round(df['avg_time_ms'].mean(), 2),
+        'std_dev_geral_ms': round(df['std_dev_ms'].mean(), 2)
     }
 
 def update_summary(summary_data, pasta):
