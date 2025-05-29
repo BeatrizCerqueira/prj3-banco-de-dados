@@ -175,31 +175,19 @@ make run-db
 ```
 
 Este comando irá:
-- Buildar a imagem do PostgreSQL;
-- Criar e iniciar o container;
-- Executar os scripts de criação das tabelas;
-- Popular o banco com dados iniciais.
+- Iniciar o container do PostgreSQL;
+- Aguardar até que o banco de dados esteja pronto para conexões;
+- Os scripts de criação das tabelas e inserção de dados iniciais serão executados automaticamente durante a inicialização do container.
 
 ### Executando Consultas
 
-1. Conecte ao banco de dados:
+Para executar as consultas, você pode usar o comando `make executar-consulta` especificando o número da consulta desejada. Por exemplo:
+
 ```bash
-docker exec -it prj3-database psql -U usuario -d base-de-dados
+make executar-consulta CONSULTA=1
 ```
 
-2. No terminal do container que irá abrir, execute a consulta desejada:
-```bash
-\i /docker-entrypoint-initdb.d/C1_matriculas_por_turma.sql
-```
-O mesmo se aplica às demais consultas.
-
-### Parâmetros de Conexão
-
-- Host: localhost <!-- [TODO] Verificar isso com o script.py -->
-- Porta: 5432
-- Banco: base-de-dados
-- Usuário: usuario
-- Senha: (vazia)
+Este comando irá executar a consulta `C01_*.sql`. O mesmo se aplica para as demais consultas.
 
 ### Outros Comandos Úteis
 
@@ -226,7 +214,7 @@ make avaliar-desempenho
 ```
 
 O script irá:
-1. Para cada configuração (sem indexação e planos 1, 2 e 3):
+1. Para cada configuração (sem indexação e planos 1, 2, 3 e 4):
    - Aplicar o plano de indexação (exceto para sem indexação);
    - Executar cada consulta 20 vezes;
    - Calcular tempo médio, desvio padrão, tempo mínimo e tempo máximo de cada consulta.
