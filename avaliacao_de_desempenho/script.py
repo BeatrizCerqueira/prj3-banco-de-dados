@@ -8,12 +8,24 @@ from tabulate import tabulate
 import sys
 import traceback
 
+# Determina o ambiente com base na variável de ambiente CONTEXT
+CONTEXT = os.getenv('CONTEXT', 'local')  # Default para 'local' se não definida
+
+if CONTEXT == 'DOCKER':
+    DB_HOST = 'prj3-database'
+    SUMMARY_PATH_BASE = Path('/app/resultados')
+else:
+    DB_HOST = 'localhost'
+    SUMMARY_PATH_BASE = Path('./avaliacao_de_desempenho/resultados')
+
+SUMMARY_PATH = SUMMARY_PATH_BASE / "resumo.csv"
+
 # Parâmetros de conexão com o banco de dados
 DB_PARAMS = {
     'dbname': 'base-de-dados',
     'user': 'usuario',
     'password': '',
-    'host': 'prj3-database',  # [TODO] Fazer funcionar tanto local quanto no Docker
+    'host': DB_HOST,
     'port': '5432'
 }
 
@@ -31,18 +43,18 @@ def execute_query(query, cursor):
 def measure_query_performance(query_path, num_executions=20):
     query = read_sql_file(query_path)
     execution_times = []
-    
+
     with psycopg2.connect(**DB_PARAMS) as conn:
         with conn.cursor() as cursor:
-            
+
             # Medições
             for _ in range(num_executions):
                 execution_time = execute_query(query, cursor)
                 execution_times.append(execution_time)
-            
+
             avg_time = statistics.mean(execution_times)
             std_dev = statistics.stdev(execution_times) if len(execution_times) > 1 else 0
-            
+
             return {
                 'query_name': os.path.basename(query_path),
                 'avg_time_ms': round(avg_time * 1000, 2),
@@ -58,12 +70,22 @@ def validate_arguments():
     return sys.argv[1]
 
 def setup_output_directory(pasta):
-    output_path = Path(f"./avaliacao_de_desempenho/resultados/{pasta}/execucoes.csv")
+    # O caminho base para 'resultados' dentro do contêiner ou localmente
+    if CONTEXT == 'DOCKER':
+        base_output_path = Path('/app/resultados')
+    else:
+        base_output_path = Path('./resultados')
+
+    output_path = base_output_path / pasta / "execucoes.csv"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     return output_path
 
 def get_sql_files():
-    consultas_dir = Path('./sql/consultas')
+    # O caminho base para 'sql/consultas' dentro do contêiner ou localmente
+    if CONTEXT == 'DOCKER':
+        consultas_dir = Path('/app/sql/consultas')
+    else:
+        consultas_dir = Path('./sql/consultas')
     return sorted(consultas_dir.glob('*.sql'))
 
 def measure_all_queries(sql_files):
@@ -94,38 +116,39 @@ def calculate_plan_summary(df, plan_name):
     }
 
 def update_summary(summary_data, pasta):
-    summary_path = Path("./avaliacao_de_desempenho/resultados/resumo.csv")
-    
     # Cria DataFrame com o novo resumo
     new_summary = pd.DataFrame([summary_data])
-    
+
+    # Garante que o diretório pai do arquivo de resumo exista
+    SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+
     # Se o arquivo já existe, lê e concatena
-    if summary_path.exists():
-        existing_summary = pd.read_csv(summary_path)
+    if SUMMARY_PATH.exists():
+        existing_summary = pd.read_csv(SUMMARY_PATH)
         updated_summary = pd.concat([existing_summary, new_summary], ignore_index=True)
     else:
         updated_summary = new_summary
-    
+
     # Salva o arquivo atualizado
-    updated_summary.to_csv(summary_path, index=False)
-    print(f"\nResumo atualizado em '{summary_path}'")
+    updated_summary.to_csv(SUMMARY_PATH, index=False)
+    print(f"\nResumo atualizado em '{SUMMARY_PATH}'")
 
 def main():
     try:
         pasta = validate_arguments()
         output_path = setup_output_directory(pasta)
-        
+
         sql_files = get_sql_files()
         results = measure_all_queries(sql_files)
-        
+
         if not results:
             return
-            
+
         df = create_results_dataframe(results)
         if not df.empty:
             display_results(df)
             save_results(df, output_path)
-            
+
             plan_name = os.path.basename(pasta)
             summary_data = calculate_plan_summary(df, plan_name)
             update_summary(summary_data, pasta)
@@ -133,4 +156,4 @@ def main():
         traceback.print_exc()
 
 if __name__ == "__main__":
-    main() 
+    main()

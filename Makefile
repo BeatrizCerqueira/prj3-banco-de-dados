@@ -44,15 +44,43 @@ avaliar-desempenho-plano:
 	@make executar-medicao-desempenho PLANO=$(PLANO)
 
 avaliar-desempenho:
-		@make run # [TODO] Ver se é run ou restart
-		@echo "Aguardando a finalização do pip install -r requirements.txt..."
-		@docker logs prj3-python | grep -q "Successfully installed" || (echo "Instalação ainda em andamento..."; sleep 5; make avaliar-desempenho)
-		# [TODO] Limpar o arquivo de resumo
-		@echo "\n=== Iniciando avaliação de desempenho ==="
-		@make executar-medicao-desempenho        # sem indexação
-		@make avaliar-desempenho-plano PLANO=1   # plano 1
-		@make avaliar-desempenho-plano PLANO=2   # plano 2
-		@make avaliar-desempenho-plano PLANO=3   # plano 3
-		@make avaliar-desempenho-plano PLANO=4   # plano 3
-		@echo "\n=== Avaliação de desempenho concluída ==="
-		@make run-down
+	@make run # Garante que os containers estão de pé
+	@echo "Aguardando a finalização do pip install -r requirements.txt..."
+	@timeout_seconds=180; \
+	start_time=$$(date +%s); \
+	while ! docker logs prj3-python 2>/dev/null | grep -q "Successfully installed"; do \
+		current_time=$$(date +%s); \
+		elapsed_time=$$((current_time - start_time)); \
+		if [ $$elapsed_time -ge $$timeout_seconds ]; then \
+			echo "Timeout: A instalação do pip demorou mais de $$timeout_seconds segundos."; \
+			echo "Últimos logs do prj3-python:"; \
+			docker logs prj3-python; \
+			exit 1; \
+		fi; \
+		echo "Instalação do pip ainda em andamento ou container prj3-python não pronto para logs... aguardando 5s"; \
+		sleep 5; \
+		if ! docker ps -q --filter "name=prj3-python" --filter "status=running" | grep -q .; then \
+			echo "Erro: Container prj3-python não está em execução. Verifique os logs do Docker."; \
+			docker logs prj3-python || echo "Não foi possível obter logs de prj3-python."; \
+			exit 1; \
+		fi; \
+	done
+	@echo "Instalação do pip concluída."
+	@rm -rf ./avaliacao_de_desempenho/resultados
+	@echo "\n=== Iniciando avaliação de desempenho ==="
+	@make executar-medicao-desempenho        # sem indexação
+	@make avaliar-desempenho-plano PLANO=1   # plano 1
+	@make avaliar-desempenho-plano PLANO=2   # plano 2
+	@make avaliar-desempenho-plano PLANO=3   # plano 3
+	@make avaliar-desempenho-plano PLANO=4   # plano 4
+	@echo "\n=== Avaliação de desempenho concluída ==="
+	@make run-down
+
+executar-consulta:
+	 @if [ -z "$(CONSULTA)" ]; then \
+	  echo "Erro: Especifique o número da consulta. Exemplo: make executar-consulta CONSULTA=1"; \
+	  exit 1; \
+	 fi
+	 @NUMERO_FORMATADO=$$(printf "%02d" $(CONSULTA)); \
+	 echo "Executando consulta C$${NUMERO_FORMATADO}_* do diretório /opt/consultas/ ..."; \
+	 docker exec prj3-database sh -c "psql -U usuario -d base-de-dados -f /opt/consultas/C$${NUMERO_FORMATADO}_*.sql"

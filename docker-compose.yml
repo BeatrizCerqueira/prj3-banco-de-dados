@@ -10,6 +10,8 @@ services:
   python:
     container_name: prj3-python
     image: python:3.11
+    environment:
+      - CONTEXT=DOCKER
     volumes:
       - ./avaliacao_de_desempenho:/app
       - ./sql/consultas:/app/sql/consultas
