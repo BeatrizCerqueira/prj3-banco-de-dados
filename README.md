@@ -95,7 +95,7 @@ O sistema acadêmico possui:
 - ID_TURMA (FK)
 - ID_ALUNO (FK)
 
-## Diagramas
+## Modelo de Entidade-Relacionamento (MER)
 
 ### Modelo Conceitual
 
