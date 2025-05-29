@@ -140,7 +140,6 @@ VALUES
     (5, 6), -- Turma 5, Gabriel Oliveira
     (3, 7), -- Turma 3, João da Silva
     (4, 7), -- Turma 4, João da Silva
-    -- (1, 8), -- Turma 1, Kauã Oliveira // Problema de superlotação!
     (5, 8), -- Turma 5, Kauã Oliveira
     (2, 9), -- Turma 2, Luana Lima
     (5, 9), -- Turma 5, Luana Lima
