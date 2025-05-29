@@ -1,111 +1,9 @@
 # [PRJ3] Sistema para Alocação de Salas e Professores
 
 ## Descrição
-A distribuição de disciplinas, salas e professores enfrenta desafios logísticos complexos. O objetivo deste projeto é modelar e implementar um sistema que otimiza essa alocação, considerando o tipo de sala, equipamentos disponíveis e número de alunos matriculados.
+A distribuição de disciplinas, salas e professores enfrenta desafios logísticos complexos. O objetivo deste projeto é modelar e implementar um banco de dados que otimiza essa alocação, considerando a capacidade das salas, equipamentos disponíveis e número de alunos matriculados, garantindo uma distribuição eficiente dos recursos acadêmicos.
 
-## Minimundo
-
-O sistema acadêmico possui:
-
-1. **Horários** - Cada horário possui um **identificador único (ID_HORARIO)**, **dia da semana (CD_DIA_SEMANA)**, **hora de início (DH_INICIO)** e **hora de fim (DH_FIM)**.
-
-2. **Equipamentos** - Cada equipamento possui um **identificador único (ID_EQUIPAMENTO)** e **nome (NO_EQUIPAMENTO)**.
-
-3. **Salas** - Cada sala possui um **identificador único (ID_SALA)**, **código (CD_SALA)**, **capacidade (QT_CAPACIDADE)** e **indicador de acessibilidade (IS_ACESSIVEL)**.
-
-4. **Alunos** - Cada aluno possui um **identificador único (ID_ALUNO)**, **nome (NO_ALUNO)** e **indicador de pessoa com deficiência (IS_PESSOA_COM_DEFICIENCIA)**.
-
-5. **Professores** - Cada professor possui um **identificador único (ID_PROFESSOR)** e **nome (NO_PROFESSOR)**.
-
-6. **Disciplinas** - Cada disciplina possui um **identificador único (ID_DISCIPLINA)**, **código (CD_DISCIPLINA)** e **nome (NO_DISCIPLINA)**.
-
-7. **Turmas** - Cada turma possui um **identificador único (ID_TURMA)**, **código (CD_TURMA)** e está associada a uma **disciplina (ID_DISCIPLINA)**, um **horário (ID_HORARIO)**, um **professor (ID_PROFESSOR)** e uma **sala (ID_SALA)**.
-
-### **Relacionamentos:**
-
-1. **Sala-Equipamento** - Relacionamento entre **salas (ID_SALA)** e **equipamentos (ID_EQUIPAMENTO)**, indicando quais equipamentos estão disponíveis em cada sala.
-
-2. **Disciplina-Equipamento** - Relacionamento entre **disciplinas (ID_DISCIPLINA)** e **equipamentos (ID_EQUIPAMENTO)**, indicando quais equipamentos são necessários para cada disciplina.
-
-3. **Turma-Aluno** - Relacionamento entre **turmas (ID_TURMA)** e **alunos (ID_ALUNO)**, indicando quais alunos estão matriculados em cada turma.
-
-### **Regras de Negócio (Restrições):**
-
-- Uma **sala** pode possuir vários equipamentos e um **equipamento** pode estar disponível em várias salas.
-- Uma **disciplina** pode precisar de vários equipamentos e um **equipamento** pode ser necessário para várias disciplinas.
-- Uma **turma** pode possuir vários alunos matriculados e um **aluno** pode estar matriculado em várias turmas.
-- Uma **turma** está associada a uma única **disciplina**, mas uma **disciplina** pode ser ministrada em várias turmas.
-- Uma **turma** está alocada em uma única **sala**, mas uma **sala** pode alocar várias turmas.
-- Uma **turma** está alocada a um único **horário**, mas um **horário** pode ser utilizado por várias turmas.
-- Uma **turma** é lecionada por um único **professor**, mas um **professor** pode lecionar em várias turmas.
-
-## Modelo de Dados
-
-### Entidades
-
-**Horário (TB_HORARIO)**
-- ID_HORARIO (PK)
-- CD_DIA_SEMANA
-- DH_INICIO
-- DH_FIM
-
-**Equipamento (TB_EQUIPAMENTO)**
-- ID_EQUIPAMENTO (PK)
-- NO_EQUIPAMENTO
-
-**Sala (TB_SALA)**
-- ID_SALA (PK)
-- CD_SALA
-- QT_CAPACIDADE
-- IS_ACESSIVEL
-
-**Aluno (TB_ALUNO)**
-- ID_ALUNO (PK)
-- NO_ALUNO
-- IS_PESSOA_COM_DEFICIENCIA
-
-**Professor (TB_PROFESSOR)**
-- ID_PROFESSOR (PK)
-- NO_PROFESSOR
-
-**Disciplina (TB_DISCIPLINA)**
-- ID_DISCIPLINA (PK)
-- CD_DISCIPLINA
-- NO_DISCIPLINA
-
-**Turma (TB_TURMA)**
-- ID_TURMA (PK)
-- CD_TURMA
-- ID_DISCIPLINA (FK)
-- ID_HORARIO (FK)
-- ID_PROFESSOR (FK)
-- ID_SALA (FK)
-
-### Relacionamentos
-
-**Sala-Equipamento (RL_SALA_EQUIPAMENTO)**
-- ID_SALA (FK)
-- ID_EQUIPAMENTO (FK)
-
-**Disciplina-Equipamento (RL_DISCIPLINA_EQUIPAMENTO)**
-- ID_DISCIPLINA (FK)
-- ID_EQUIPAMENTO (FK)
-
-**Turma-Aluno (RL_TURMA_ALUNO)**
-- ID_TURMA (FK)
-- ID_ALUNO (FK)
-
-## Modelo de Entidade-Relacionamento (MER)
-
-### Modelo Conceitual
-
-![Modelo Conceitual](docs/modelo_conceitual.png)
-
-### Modelo Lógico
-
-![Modelo Lógico](docs/modelo_logico.png)
-
-## Requisitos/Consultas
+## Requisitos
 
 ### Originais
 
@@ -151,6 +49,110 @@ O sistema acadêmico possui:
     1. Consultar carga horária de um aluno
     2. Consultar dias da semana com maior carga horária de um aluno
 
+## Minimundo
+
+### Descrição
+
+O sistema acadêmico possui:
+
+1. **Equipamentos** - Cada equipamento possui um **identificador único (ID_EQUIPAMENTO)** e **nome (NO_EQUIPAMENTO)**.
+
+2. **Disciplinas** - Cada disciplina possui um **identificador único (ID_DISCIPLINA)**, **código (CD_DISCIPLINA)** e **nome (NO_DISCIPLINA)**.
+
+3. **Salas** - Cada sala possui um **identificador único (ID_SALA)**, **código (CD_SALA)**, **capacidade (QT_CAPACIDADE)** e **indicador de acessibilidade (IS_ACESSIVEL)**.
+
+4. **Horários** - Cada horário possui um **identificador único (ID_HORARIO)**, **dia da semana (CD_DIA_SEMANA)**, **hora de início (DH_INICIO)** e **hora de fim (DH_FIM)**.
+
+5. **Professores** - Cada professor possui um **identificador único (ID_PROFESSOR)** e **nome (NO_PROFESSOR)**.
+
+6. **Alunos** - Cada aluno possui um **identificador único (ID_ALUNO)**, **nome (NO_ALUNO)** e **indicador de pessoa com deficiência (IS_PESSOA_COM_DEFICIENCIA)**.
+
+7. **Turmas** - Cada turma possui um **identificador único (ID_TURMA)**, **código (CD_TURMA)** e está associada a uma **disciplina (ID_DISCIPLINA)**, um **horário (ID_HORARIO)**, um **professor (ID_PROFESSOR)** e uma **sala (ID_SALA)**.
+
+### Relacionamentos
+
+1. **Disciplina-Equipamento** - Relacionamento entre **disciplinas (ID_DISCIPLINA)** e **equipamentos (ID_EQUIPAMENTO)**, indicando quais equipamentos são necessários para cada disciplina.
+
+2. **Sala-Equipamento** - Relacionamento entre **salas (ID_SALA)** e **equipamentos (ID_EQUIPAMENTO)**, indicando quais equipamentos estão disponíveis em cada sala.
+
+3. **Turma-Aluno** - Relacionamento entre **turmas (ID_TURMA)** e **alunos (ID_ALUNO)**, indicando quais alunos estão matriculados em cada turma.
+
+### Restrições
+
+- Uma **sala** pode possuir vários equipamentos e um **equipamento** pode estar disponível em várias salas.
+- Uma **disciplina** pode precisar de vários equipamentos e um **equipamento** pode ser necessário para várias disciplinas.
+- Uma **turma** pode possuir vários alunos matriculados e um **aluno** pode estar matriculado em várias turmas.
+- Uma **turma** está associada a uma única **disciplina**, mas uma **disciplina** pode ser ministrada em várias turmas.
+- Uma **turma** está alocada em uma única **sala**, mas uma **sala** pode alocar várias turmas.
+- Uma **turma** está alocada a um único **horário**, mas um **horário** pode ser utilizado por várias turmas.
+- Uma **turma** é lecionada por um único **professor**, mas um **professor** pode lecionar em várias turmas.
+
+## Modelo de Dados
+
+### Entidades
+
+**Equipamento (TB_EQUIPAMENTO)**
+- ID_EQUIPAMENTO (PK)
+- NO_EQUIPAMENTO
+
+**Disciplina (TB_DISCIPLINA)**
+- ID_DISCIPLINA (PK)
+- CD_DISCIPLINA
+- NO_DISCIPLINA
+
+**Sala (TB_SALA)**
+- ID_SALA (PK)
+- CD_SALA
+- QT_CAPACIDADE
+- IS_ACESSIVEL
+
+**Horário (TB_HORARIO)**
+- ID_HORARIO (PK)
+- CD_DIA_SEMANA
+- DH_INICIO
+- DH_FIM
+
+**Professor (TB_PROFESSOR)**
+- ID_PROFESSOR (PK)
+- NO_PROFESSOR
+
+**Aluno (TB_ALUNO)**
+- ID_ALUNO (PK)
+- NO_ALUNO
+- IS_PESSOA_COM_DEFICIENCIA
+
+**Turma (TB_TURMA)**
+- ID_TURMA (PK)
+- CD_TURMA
+- ID_DISCIPLINA (FK)
+- ID_HORARIO (FK)
+- ID_PROFESSOR (FK)
+- ID_SALA (FK)
+
+### Relacionamentos
+
+**Disciplina-Equipamento (RL_DISCIPLINA_EQUIPAMENTO)**
+- ID_DISCIPLINA (FK)
+- ID_EQUIPAMENTO (FK)
+
+**Sala-Equipamento (RL_SALA_EQUIPAMENTO)**
+- ID_SALA (FK)
+- ID_EQUIPAMENTO (FK)
+
+**Turma-Aluno (RL_TURMA_ALUNO)**
+- ID_TURMA (FK)
+- ID_ALUNO (FK)
+
+## Modelo de Entidade-Relacionamento (MER)
+
+### Modelo Conceitual
+
+![Modelo Conceitual](docs/modelo_conceitual.png)
+
+### Modelo Lógico
+
+![Modelo Lógico](docs/modelo_logico.png)
+
 ## Configuração do Banco de Dados
 
 ### Requisitos
@@ -193,7 +195,7 @@ O mesmo se aplica às demais consultas.
 
 ### Parâmetros de Conexão
 
-- Host: localhost
+- Host: localhost <!-- [TODO] Verificar isso com o script.py -->
 - Porta: 5432
 - Banco: base-de-dados
 - Usuário: usuario
