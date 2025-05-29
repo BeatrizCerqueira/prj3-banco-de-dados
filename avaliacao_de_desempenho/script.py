@@ -13,7 +13,7 @@ DB_PARAMS = {
     'dbname': 'base-de-dados',
     'user': 'usuario',
     'password': '',
-    'host': 'localhost',
+    'host': 'prj3-database',  # [TODO] Fazer funcionar tanto local quanto no Docker
     'port': '5432'
 }
 

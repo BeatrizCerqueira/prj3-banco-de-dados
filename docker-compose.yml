@@ -14,7 +14,7 @@ services:
     image: python:3.11
     volumes:
       - ./avaliacao_de_desempenho:/app
-      - ./sql/consultas:/app/consultas
+      - ./sql/consultas:/app/sql/consultas
     working_dir: /app
     command: >
       sh -c "pip install -r requirements.txt &&

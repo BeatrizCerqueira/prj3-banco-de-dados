@@ -6,6 +6,7 @@ ENV POSTGRES_HOST_AUTH_METHOD=trust
 
 COPY ../sql/tabelas/* /docker-entrypoint-initdb.d/
 COPY ../sql/seeds/* /docker-entrypoint-initdb.d/
+COPY ../sql/planos_de_indexacao/* /opt/planos_de_indexacao/
 
 # [TODO] Passar as queries para dentro sem executá-las
 # COPY ../sql/consultas/* /docker-entrypoint-initdb.d/
