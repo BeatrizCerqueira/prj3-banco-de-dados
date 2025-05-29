@@ -1,0 +1,27 @@
+-- Requisito 8.1: Consultar disponibilidade de turmas alocadas em salas acessíveis
+SELECT
+    t.CD_TURMA,
+    d.CD_DISCIPLINA,
+    d.NO_DISCIPLINA,
+    s.CD_SALA,
+    s.IS_ACESSIVEL,
+    COUNT(rta.ID_ALUNO) as QT_ALUNOS_MATRICULADOS,
+    s.QT_CAPACIDADE - COUNT(rta.ID_ALUNO) as QT_VAGAS_DISPONIVEIS
+FROM
+    TB_TURMA t
+    JOIN TB_SALA s ON t.ID_SALA = s.ID_SALA
+    JOIN TB_DISCIPLINA d ON t.ID_DISCIPLINA = d.ID_DISCIPLINA
+    JOIN TB_HORARIO h ON t.ID_HORARIO = h.ID_HORARIO
+    LEFT JOIN RL_TURMA_ALUNO rta ON t.ID_TURMA = rta.ID_TURMA
+WHERE
+    s.IS_ACESSIVEL = true
+GROUP BY
+    t.CD_TURMA,
+    d.CD_DISCIPLINA,
+    d.NO_DISCIPLINA,
+    s.CD_SALA,
+    s.IS_ACESSIVEL,
+    s.QT_CAPACIDADE
+ORDER BY
+    d.CD_DISCIPLINA,
+    t.CD_TURMA;

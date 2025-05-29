@@ -1,0 +1,32 @@
+-- Tabela de Equipamentos Necessários por Disciplina
+----- Uma disciplina pode precisar de 0 ou mais equipamentos
+----- Um equipamento pode ser necessário para 0 ou mais disciplinas
+CREATE TABLE
+    RL_DISCIPLINA_EQUIPAMENTO (
+        ID_DISCIPLINA INTEGER NOT NULL,
+        ID_EQUIPAMENTO INTEGER NOT NULL,
+        CONSTRAINT FK_DISCIPLINA_EQUIPAMENTO_DISCIPLINA FOREIGN KEY (ID_DISCIPLINA) REFERENCES TB_DISCIPLINA (ID_DISCIPLINA),
+        CONSTRAINT FK_DISCIPLINA_EQUIPAMENTO_EQUIPAMENTO FOREIGN KEY (ID_EQUIPAMENTO) REFERENCES TB_EQUIPAMENTO (ID_EQUIPAMENTO)
+    );
+
+-- Tabela de Equipamentos Disponíveis por Sala
+----- Uma sala pode ter 0 ou mais equipamentos
+----- Um equipamento pode estar em 0 ou mais salas
+CREATE TABLE
+    RL_SALA_EQUIPAMENTO (
+        ID_SALA INTEGER NOT NULL,
+        ID_EQUIPAMENTO INTEGER NOT NULL,
+        CONSTRAINT FK_SALA_EQUIPAMENTO_SALA FOREIGN KEY (ID_SALA) REFERENCES TB_SALA (ID_SALA),
+        CONSTRAINT FK_SALA_EQUIPAMENTO_EQUIPAMENTO FOREIGN KEY (ID_EQUIPAMENTO) REFERENCES TB_EQUIPAMENTO (ID_EQUIPAMENTO)
+    );
+
+-- Tabela de Alunos Matriculados por Turma
+----- Uma turma pode ter 0 ou mais alunos
+----- Um aluno pode estar matriculado em 0 ou mais turmas
+CREATE TABLE
+    RL_TURMA_ALUNO (
+        ID_TURMA INTEGER NOT NULL,
+        ID_ALUNO INTEGER NOT NULL,
+        CONSTRAINT FK_TURMA_ALUNO_TURMA FOREIGN KEY (ID_TURMA) REFERENCES TB_TURMA (ID_TURMA),
+        CONSTRAINT FK_TURMA_ALUNO_ALUNO FOREIGN KEY (ID_ALUNO) REFERENCES TB_ALUNO (ID_ALUNO)
+    );
