@@ -29,6 +29,7 @@ avaliar-desempenho-plano:
 
 avaliar-desempenho:
 	@make run-db
+	# [TODO] Limpar o arquivo de resumo
 	@echo "\n=== Iniciando avaliação de desempenho ==="
 	@make executar-medicao-desempenho
 	@make avaliar-desempenho-plano PLANO=1
