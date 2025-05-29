@@ -9,3 +9,8 @@ COPY ../sql/seeds/* /docker-entrypoint-initdb.d/
 
 # [TODO] Passar as queries para dentro sem executá-las
 # COPY ../sql/consultas/* /docker-entrypoint-initdb.d/
+
+# COPY ../sql/planos_de_indexacao/plano_1.sql /docker-entrypoint-initdb.d/
+# COPY ../sql/planos_de_indexacao/plano_2.sql /docker-entrypoint-initdb.d/
+# COPY ../sql/planos_de_indexacao/plano_3.sql /docker-entrypoint-initdb.d/
+# COPY ../sql/planos_de_indexacao/plano_4y.sql /docker-entrypoint-initdb.d/
