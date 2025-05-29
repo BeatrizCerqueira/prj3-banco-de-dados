@@ -165,8 +165,8 @@ O sistema acadêmico possui:
 
 1. Clone o repositório:
 ```bash
-git clone git@github.com:BeatrizCerqueira/mata60-banco-de-dados.git
-cd mata60-banco-de-dados
+git clone https://github.com/BeatrizCerqueira/prj3-banco-de-dados
+cd prj3-banco-de-dados
 ```
 
 2. Inicie o banco de dados usando Docker:
